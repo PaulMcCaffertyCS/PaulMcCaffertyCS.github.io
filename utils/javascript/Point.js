@@ -1,3 +1,7 @@
+/**
+ * @property {number} x X-axis based value.
+ * @property {number} y Y-axis based value.
+ */
 class Point {
     /**
      * @param {number} x X value.
