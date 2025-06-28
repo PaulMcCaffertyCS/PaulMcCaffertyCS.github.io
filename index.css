@@ -1,10 +1,46 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(5, 58, 65);
+    /* background: linear-gradient(135deg, rgb(11, 52, 65) 0%, rgb(36, 78, 83), 60%, rgb(17, 35, 41) 100%); */
+    /* background: radial-gradient(circle, rgb(16, 77, 95) 0%, rgb(23, 54, 58), 60%, rgb(17, 35, 41) 100%); */
+}
+
 h1 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: blue;
     margin: 0px;
 }
 
+
+
+.page-menu {
+    position: absolute;
+    display: list-item;
+}
+
+.page-header {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-body {
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
 #booperton {
+    position: absolute;
     transition: left 0.2s ease, top 0.2s ease;
     cursor: pointer;
 }
