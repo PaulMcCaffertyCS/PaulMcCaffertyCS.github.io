@@ -1,4 +1,4 @@
-import Point from "../javascript/Point.js";
+import Point from "../javascript/point.js";
 
 /**
  * @param {HTMLElement} element Element to update position of.

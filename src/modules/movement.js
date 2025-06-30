@@ -1,5 +1,5 @@
-import { updatePosition } from "../utils/html/ElementUtils.js";
-import Point from "../utils/javascript/Point.js";
+import { updatePosition } from "../utils/html/element-utils.js";
+import Point from "../utils/javascript/point.js";
 
 /**
  * @param {HTMLElement|null} element Element for width/height, else null to just get a random Point in the Window.
@@ -110,6 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = document.getElementById("booperton");
     // button.addEventListener("mouseover", () => { randomElementLocation(button) });
     // button.addEventListener("mouseover", (event) => { chaseElement(event, button) });
-
-    document.addEventListener("mousemove", (event) => { chaseElementWindow(event, button) });
+    
+    // document.addEventListener("mousemove", (event) => { chaseElementWindow(event, button) });
 })
