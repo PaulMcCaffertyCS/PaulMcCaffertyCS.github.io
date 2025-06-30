@@ -5,17 +5,26 @@
         <link rel="icon" href="assets/Logo_PaulMcCafferty16x12.png">
         <link rel="stylesheet" href="index.css">
         <script src="index.js" defer></script>
-        <script type="module" src="modules/Movement.js"></script>
+        <script type="module" src="src/modules/Movement.js"></script>
         <meta charset="UTF-8">
     </head>
     <body>
-        
-        <div class="page-header">
-            <h1>Please hire me. I'm curious</h1>
+        <div id="page-header">
+            <img id="page-header-logo" src="assets/Logo_PaulMcCafferty.png" alt="Paul McCafferty Logo" width="64px" height="64px"/>
+            <div id="page-menu">
+                <button class="menu-button">Home</button>
+                <button class="menu-button">Projects</button>
+                <button class="menu-button">Games</button>
+                <button class="menu-button">About</button>
+                <button class="menu-button">Contact</button>
+            </div>
+        </div>
+        <div id="page-title">
+            <h1>Paul McCafferty</h1>
             <h2>I'm currently developing my portfolio to be better. Thanks for visiting! :D</h2>
             <p>Humuhumunukunukuappawa-a</p>
         </div>
-        <div class="page-body">
+        <div id="page-body">
             <button id="booperton" onclick="boop();">
                 <h3>DO SOMETHING</h3>
             </button>
