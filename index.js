@@ -1,3 +1,0 @@
-function boop() {
-    alert("Boop!");
-}

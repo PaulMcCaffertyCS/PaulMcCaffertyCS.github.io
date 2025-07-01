@@ -54,52 +54,6 @@ p {
 
 
 
-.menu-button {
-    width: 80px;
-    height: 30px;
-    margin: 5px;
-    background-color: rgba(35, 214, 151, 0.8);
-    border: 0px;
-    border-radius: 6px;
-}
-
-.menu-button:hover {
-    width: 80px;
-    height: 35px;
-    margin: 5px;
-    background-color: rgba(27, 179, 126, 0.8);
-    border: 0px;
-    border-radius: 6px;
-}
-
-.menu-button:active {
-    background-color: rgba(19, 131, 92, 0.8);
-}
-
-
-
-#page-header {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-#page-header-logo {
-    width: 64px;
-    height: 48px;
-}
-
-#page-menu {
-    display: flex;
-    flex-direction: row;
-    top: 5%;
-    left: 5%;
-    align-items: center;
-    justify-content: center;
-}
-
 #page-title {
     flex: 1;
     display: flex;

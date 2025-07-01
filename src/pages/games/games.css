@@ -1,0 +1,52 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-repeat: repeat;
+    background-image: url("../../../assets/wood_texture_400x317.png");
+    background-color: rgba(0, 0, 0, 0.65);
+    background-blend-mode: multiply;
+}
+
+h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0px;
+    color: rgba(255, 255, 255, 1);
+}
+
+h2 {
+    /* margin: 0px; */
+    color: rgba(255, 255, 255, 1);
+}
+
+p {
+    color: rgba(255, 255, 255, 1);
+}
+
+
+
+#page-title {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#page-body {
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+}
+
+#booperton {
+    position: absolute;
+    transition: left 0.2s ease, top 0.2s ease;
+    cursor: pointer;
+    left: 46%;
+}
