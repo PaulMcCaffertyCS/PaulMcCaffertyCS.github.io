@@ -111,5 +111,5 @@ document.addEventListener("DOMContentLoaded", () => {
     // button.addEventListener("mouseover", () => { randomElementLocation(button) });
     // button.addEventListener("mouseover", (event) => { chaseElement(event, button) });
     
-    // document.addEventListener("mousemove", (event) => { chaseElementWindow(event, button) });
+    document.addEventListener("mousemove", (event) => { chaseElementWindow(event, button) });
 })
