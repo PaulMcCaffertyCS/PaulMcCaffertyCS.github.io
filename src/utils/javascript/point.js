@@ -30,6 +30,15 @@ class Point {
         this.x += dx;
         this.y += dy;
     }
+
+    /**
+     * @param {number} x Defaults to the current x, if not specified.
+     * @param {number} y Defaults to the current y, if not specified.
+     * @returns {Point} A copy of the current Point object, with a new x and/or y, if specified.
+     */
+    copy(x = this.x, y = this.y) {
+        return new Point(x, y);
+    }
 }
 
 export default Point;

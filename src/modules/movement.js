@@ -107,9 +107,12 @@ function chaseElementWindow(event, element) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const button = document.getElementById("booperton");
-    // button.addEventListener("mouseover", () => { randomElementLocation(button) });
-    // button.addEventListener("mouseover", (event) => { chaseElement(event, button) });
-    
-    document.addEventListener("mousemove", (event) => { chaseElementWindow(event, button) });
+    const pageLink = window.location.href;
+    if (pageLink.endsWith("games.html")) {
+        const button = document.getElementById("boop");
+        // button.addEventListener("mouseover", () => { randomElementLocation(button) });
+        // button.addEventListener("mouseover", (event) => { chaseElement(event, button) });
+        
+        document.addEventListener("mousemove", (event) => { chaseElementWindow(event, button) });
+    }
 })

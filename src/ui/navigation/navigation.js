@@ -1,3 +1,13 @@
+function navigateToIndex() {
+    const tabTarget = `_top`;
+    const pageName = `index.html`;
+    window.open(`../../../${pageName}`, tabTarget);
+}
+
+function navigateToHomeIndex() {
+    navigateTo("index-redirect", false);
+}
+
 function navigateToHome() {
     navigateTo("home", false);
 }
@@ -38,7 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const contactButton = document.getElementById("navigation-contact-button");
 
     homeButton.addEventListener("click", () => {
-        navigateToHome();
+        // navigateToHome();
+        // navigateToHomeIndex();
+        navigateToIndex();
     });
     projectsButton.addEventListener("click", () => {
         navigateToProjects();
