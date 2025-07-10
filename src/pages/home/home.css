@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     justify-content: center;
     background-repeat: repeat;
-    background-image: url("../../../assets/wood_texture_400x317.png");
+    background-image: url("../../../assets/images/wood_texture_400x317.png");
     background-color: rgba(0, 0, 0, 0.65);
     background-blend-mode: multiply;
 }
@@ -30,6 +30,11 @@ p {
 }
 
 
+
+#navigation-menu {
+    margin: 0px;
+    border: 0px;
+}
 
 #page-title {
     flex: 1;
