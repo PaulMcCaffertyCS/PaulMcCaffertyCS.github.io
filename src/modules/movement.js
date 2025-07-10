@@ -107,13 +107,6 @@ function chaseElementWindow(event, element) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-<<<<<<< Updated upstream
-    const button = document.getElementById("booperton");
-    // button.addEventListener("mouseover", () => { randomElementLocation(button) });
-    // button.addEventListener("mouseover", (event) => { chaseElement(event, button) });
-    
-    // document.addEventListener("mousemove", (event) => { chaseElementWindow(event, button) });
-=======
     const pageLink = window.location.href;
     if (pageLink.endsWith("games.html")) {
         const button = document.getElementById("boop");
@@ -122,5 +115,4 @@ document.addEventListener("DOMContentLoaded", () => {
         
         document.addEventListener("mousemove", (event) => { chaseElementWindow(event, button) });
     }
->>>>>>> Stashed changes
 })
