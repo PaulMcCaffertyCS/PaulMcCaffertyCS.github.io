@@ -1,0 +1,3 @@
+function boop() {
+    alert("Boop!");
+}
