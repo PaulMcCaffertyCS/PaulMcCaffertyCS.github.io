@@ -1,48 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
-        <title>Paul McCafferty | Home</title>
-        <link rel="icon" href="assets/images/Logo_PaulMcCafferty16x12.png">
-        <link rel="stylesheet" href="index.css">
-        <script src="index.js" defer></script>
-        <script type="module" src="src/modules/Movement.js"></script>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite + React + TS</title>
     </head>
     <body>
-        <iframe id="navigation-menu" src="src/ui/navigation/navigation.html"></iframe>
-        <div id="page-container">
-            <div id="page-title">
-                <h1 id="page-title-name" class="gradient-text">Paul McCafferty</h1>
-                <p id="page-title-intro">A proactive and driven individual, I bring five years of full-stack, professional experience and a focus on curiosity to my projects.</p>
-            </div>
-            <div id="page-body">
-                <div id="project-option-section-title">
-                    <h2 id="project-option-section-title-text" class="gradient-text">Projects</h2>
-                </div>
-                <div class="project-options">
-                    <div class="project-option">
-                        <div class="project-option-overview">
-                            <h2 class="project-option-text">CWU Parking Application</h2>
-                            <p class="project-option-brief">Made as my Capstone Project back in January-March of 2020, this was a prototype to assist peope with parking on campus</p>
-                        </div>
-                        <div class="project-option-divider"></div>
-                        <div class="project-option-preview">
-                            <img class="project-option-image" src="assets/images/green_circuitry_1200x1200.jpg">
-                        </div>
-                    </div>
-                    <div class="project-option">
-                        <div class="project-option-overview">
-                            <h2 class="project-option-text">Function: LRL</h2>
-                            <p class="project-option-brief">I always dreamt of owning a business. That's why when I was still a Senior in University and a business major approached me with an idea for "bringing the social back to social media," I took to development.</p>
-                        </div>
-                        <div class="project-option-divider"></div>
-                        <div class="project-option-preview">
-                            <img class="project-option-image" src="assets/images/green_circuitry_1200x1200.jpg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="circuit-background"></div>
-        </div>
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
     </body>
 </html>
