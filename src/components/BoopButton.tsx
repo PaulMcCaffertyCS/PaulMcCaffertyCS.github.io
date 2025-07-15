@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Point from "../utils/javascript/Point";
 import { updatePosition } from "../utils/html/ElementUtils";
+import "./BoopButton.css";
 
 const BoopButton: React.FC = () => {
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -48,7 +49,7 @@ const BoopButton: React.FC = () => {
     }, []);
 
     return (
-        <button ref={buttonRef} id="boop" style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}>
+        <button ref={buttonRef} id="boop">
             Boop
         </button>
     );

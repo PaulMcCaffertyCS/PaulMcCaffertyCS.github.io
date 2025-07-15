@@ -13,8 +13,6 @@ const Navbar = () => {
                 alt="Paul McCafferty Logo"
                 width="64"
                 height="64"
-                onClick={() => navigate("/")}
-                style={{ cursor: "pointer" }}
             />
             <div id="page-menu">
                 <button id="home-button" className="menu-button" onClick={() => navigate("/")}>Home</button>
