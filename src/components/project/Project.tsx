@@ -1,5 +1,5 @@
 import type { FC, JSX } from "react";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import Logger from "../../utils/log/Logger";
 import "./Project.css";
 import greenCircuitryImage from "../../assets/images/green_circuitry_1200x1200.jpg";
@@ -7,7 +7,7 @@ import type ProjectProps from "./ProjectProps";
 
 const Project: FC<ProjectProps> = (props): JSX.Element => {
     const TAG = "Project";
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     return (
         <div className="project-option" onClick={() => Logger.d(TAG, "Project Selected")}>
