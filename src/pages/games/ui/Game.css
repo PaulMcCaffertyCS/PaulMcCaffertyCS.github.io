@@ -1,0 +1,51 @@
+.game-option {
+    display: flex;
+    flex-direction: row;
+    width: 750px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(11, 11, 15);
+    overflow: hidden;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 12px;
+    border-color: transparent;
+    margin: 25px;
+}
+
+.game-option:hover {
+    border-color: rgb(6, 216, 93);
+    cursor: pointer;
+}
+
+.game-option-overview {
+    height: 100%;
+    flex: 5;
+    flex-direction: column;
+}
+
+.game-option-preview {
+    flex: 4;
+}
+
+.game-option-image {
+    width: 100%;
+    height: 100%;
+}
+
+.game-option-divider {
+    width: 2px;
+    height: 100%;
+    background-color: rgb(161, 161, 161);
+}
+
+.game-option-text {
+    padding: 25px 20px 0px;
+    color: white;
+}
+
+.game-option-brief {
+    padding: 0px 20px;
+    color: white;
+}

@@ -1,10 +1,10 @@
-const Contact = () => {
+const AboutUI = () => {
     return (
         <div id="page-container">
             <div id="page-title">
-                <h1 id="page-title-name" className="gradient-text">Contact</h1>
+                <h1 id="page-title-name" className="gradient-text">About</h1>
                 <p id="page-title-intro">
-                    I'll be adding ways to contact me here soon.
+                    Who Am I?
                 </p>
             </div>
             <div id="page-body">
@@ -14,4 +14,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default AboutUI;

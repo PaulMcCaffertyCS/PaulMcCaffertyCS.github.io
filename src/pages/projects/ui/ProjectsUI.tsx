@@ -1,7 +1,7 @@
-import Project from "../../components/project/Project";
-import ProjectOption from "../../components/project/ProjectOption";
+import Project from "./Project";
+import ProjectOption from "../viewmodel/ProjectOption";
 
-const Projects = () => {
+const ProjectsUI = () => {
     const projectCWU = ProjectOption.CWU;
     const projectFunction = ProjectOption.FUNCTION_LRL;
     
@@ -15,8 +15,8 @@ const Projects = () => {
             </div>
             <div id="page-body">
                 <div className="project-options">
-                    <Project title={projectCWU.title} brief={projectCWU.brief} />
-                    <Project title={projectFunction.title} brief={projectFunction.brief} />
+                    <Project title={projectCWU.title} brief={projectCWU.brief} link={projectCWU.link} preview={projectCWU.preview} />
+                    <Project title={projectFunction.title} brief={projectFunction.brief} link={projectFunction.link} preview={projectFunction.preview} />
                 </div>
             </div>
             <div id="circuit-background"></div>
@@ -24,4 +24,4 @@ const Projects = () => {
     );
 };
 
-export default Projects;
+export default ProjectsUI;
