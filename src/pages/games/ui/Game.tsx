@@ -4,22 +4,22 @@ import Logger from "../../../utils/log/Logger";
 import type GameProps from "../viewmodel/GameProps";
 import "./Game.css";
 
-const Game: FC<GameProps> = (props): JSX.Element => {
+const Game: FC<GameProps> = ({ title, link, brief, preview }): JSX.Element => {
     const TAG = "Game";
     const navigate = useNavigate();
 
     return (
         <div className="game-option" onClick={() => {
-            Logger.d(TAG, `Launch ${props.title} by going to ${props.link}`);
-            navigate(`/games/${props.link}`);
+            Logger.d(TAG, `Launch ${title} by going to ${link}`);
+            navigate(`/games/${link}`);
         }}>
             <div className="game-option-overview">
-                <h2 className="game-option-text">{props.title}</h2>
-                <p className="game-option-brief">{props.brief}</p>
+                <h2 className="game-option-text">{title}</h2>
+                <p className="game-option-brief">{brief}</p>
             </div>
             <div className="game-option-divider" />
             <div className="game-option-preview">
-                <img className="game-option-image" src={props.preview} alt="Preview" />
+                <img className="game-option-image" src={preview} alt="Preview" />
             </div>
         </div>
     )
