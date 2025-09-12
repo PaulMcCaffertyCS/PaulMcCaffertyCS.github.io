@@ -3,11 +3,14 @@ import type JezzBallGridProps from "../viewmodel/JezzBallGridProps";
 import { useEffect, useRef, useState } from "react";
 import JezzBallSquare from "./JezzBallSquare";
 import "./JezzBallGrid.css";
+import Color from "../../../../utils/color/Color";
+import Point from "../../../../utils/javascript/Point";
 
 const JezzBallGrid: FC<JezzBallGridProps> = ({ ref, width, height, getSquareProps }) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
-    const [points, setPoints] = useState<{ x: number, y: number }[]>([]);
+    const [leftTopLine, setLeftTopLine] = useState<Point[]>([]);
+    const [rightBottomLine, setRightBottomLine] = useState<Point[]>([]);
     const squares = [];
 
     useEffect(() => {
@@ -18,15 +21,29 @@ const JezzBallGrid: FC<JezzBallGridProps> = ({ ref, width, height, getSquareProp
         if (!context) return;
 
         context.clearRect(0, 0, canvas.width, canvas.height);
-        context.strokeStyle = "red";
-        context.lineWidth = 2;
-        context.beginPath();
-        for (let i = 0; i < points.length - 1; i++) {
-            context.moveTo(points[i].x, points[i].y);
-            context.lineTo(points[i + 1].x, points[i + 1].y);
+
+        if (leftTopLine.length > 1) {
+            context.strokeStyle = Color.RED;
+            context.lineWidth = 4;
+            context.beginPath();
+            for (let i = 0; i < leftTopLine.length - 1; i++) {
+                context.moveTo(leftTopLine[i].x, leftTopLine[i].y);
+                context.lineTo(leftTopLine[i + 1].x, leftTopLine[i + 1].y);
+            }
+            context.stroke();
         }
-        context.stroke();
-    }, [points]);
+
+        if (rightBottomLine.length > 1) {
+            context.strokeStyle = Color.BLUE;
+            context.lineWidth = 4;
+            context.beginPath();
+            for (let i = 0; i < rightBottomLine.length - 1; i++) {
+                context.moveTo(rightBottomLine[i].x, rightBottomLine[i].y);
+                context.lineTo(rightBottomLine[i + 1].x, rightBottomLine[i + 1].y);
+            }
+            context.stroke();
+        }
+    }, [leftTopLine, rightBottomLine]);
 
     const handleClick = (event: MouseEvent) => {
         const rect = containerRef.current?.getBoundingClientRect();
@@ -35,7 +52,15 @@ const JezzBallGrid: FC<JezzBallGridProps> = ({ ref, width, height, getSquareProp
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
 
-        setPoints((prev) => [...prev, {x, y}]);
+        setLeftTopLine((previous) => [...previous, new Point(x, y)]);
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const mirroredX = centerX - (x - centerX);
+        const mirroredY = centerY - (y - centerY);
+
+        setRightBottomLine((previous) => [...previous, new Point(mirroredX, mirroredY)]);
     }
 
     for (let y = 0; y < height; y++) {
@@ -56,34 +81,3 @@ const JezzBallGrid: FC<JezzBallGridProps> = ({ ref, width, height, getSquareProp
 }
 
 export default JezzBallGrid;
-
-//     return (
-//         <div 
-//             ref={containerRef}
-//             className="jezzball-container"
-//             onClick={handleClick}
-//             style={{ position: "relative" }}
-//         >
-//             <canvas
-//                 ref={canvasRef}
-//                 width={width * 50}  // Adjust depending on square size
-//                 height={height * 50}
-//                 style={{ 
-//                     position: "absolute", 
-//                     top: 0, 
-//                     left: 0, 
-//                     pointerEvents: "none" // Let clicks pass through to grid
-//                 }}
-//             />
-//             <div 
-//                 ref={ref} 
-//                 className="jezzball-grid"
-//                 style={{ gridTemplateColumns: `repeat(${width}, 1fr)` }}
-//             >
-//                 {squares}
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default JezzBallGrid;
