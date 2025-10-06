@@ -1,81 +1,110 @@
-import type { FC, MouseEvent } from "react";
-import type JezzBallGridProps from "../viewmodel/JezzBallGridProps";
+import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
-import JezzBallSquare from "./JezzBallSquare";
 import "./JezzBallGrid.css";
-import Color from "../../../../utils/color/Color";
-import Point from "../../../../utils/javascript/Point";
+import type JezzBallGridProps from "../viewmodel/JezzBallGridProps";
+import Size from "../../../../utils/javascript/Size";
+import Logger from "../../../../utils/log/Logger";
+import PatternCanvas from "../../../../utils/ui/PatternCanvas";
+import WorkerActionType from "../../../../utils/workers/WorkerActionType";
+import JezzBallViewModel from "../viewmodel/JezzBallViewModel";
 
-const JezzBallGrid: FC<JezzBallGridProps> = ({ ref, width, height, getSquareProps }) => {
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
+const TAG = "JezzBallGrid";
+
+const JezzBallGrid: FC<JezzBallGridProps> = () => {
+    const initRef = useRef(false);
     const containerRef = useRef<HTMLDivElement | null>(null);
-    const [leftTopLine, setLeftTopLine] = useState<Point[]>([]);
-    const [rightBottomLine, setRightBottomLine] = useState<Point[]>([]);
-    const squares = [];
+    const patternCanvasRef = useRef<HTMLCanvasElement | null>(null);
+    const gameCanvasRef = useRef<HTMLCanvasElement | null>(null);
+    const workersRef = useRef<{
+        renderer: Worker | null;
+        leftTop: Worker | null;
+        rightBottom: Worker | null;
+    }>({
+        renderer: null,
+        leftTop: null,
+        rightBottom: null
+    });
+    const jezzBallViewModel = new JezzBallViewModel(
+        containerRef,
+        patternCanvasRef,
+        gameCanvasRef,
+        workersRef
+    );
+    const GRID_SIZE = new Size(500, 275);
 
     useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
+        if (initRef.current) return;
+        initRef.current = true
 
-        const context = canvas.getContext("2d");
-        if (!context) return;
+        const patternCanvas = patternCanvasRef.current;
+        if (!patternCanvas) {
+            Logger.w(TAG, `PatternCanvas element not found`);
+            return;
+        }
 
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        const gameCanvas = gameCanvasRef.current;
+        if (!gameCanvas || !("OffscreenCanvas" in window)) {
+            Logger.w(TAG, `OffscreenCanvas not supported or canvas element not found`);
+            return;
+        }
 
-        if (leftTopLine.length > 1) {
-            context.strokeStyle = Color.RED;
-            context.lineWidth = 4;
-            context.beginPath();
-            for (let i = 0; i < leftTopLine.length - 1; i++) {
-                context.moveTo(leftTopLine[i].x, leftTopLine[i].y);
-                context.lineTo(leftTopLine[i + 1].x, leftTopLine[i + 1].y);
+        gameCanvas.style.left = `${patternCanvas.getBoundingClientRect().left}px`;
+        gameCanvas.style.top = `${patternCanvas.getBoundingClientRect().top}px`;
+
+        const offscreenCanvas = gameCanvas.transferControlToOffscreen();
+
+        const workerRenderer = new Worker(new URL(`../../../../workers/RendererWorker.ts`, import.meta.url), { type: "module" });
+        workerRenderer.postMessage({
+            type: WorkerActionType.INIT,
+            canvas: offscreenCanvas,
+            width: gameCanvas.width,
+            height: gameCanvas.height
+        }, [offscreenCanvas]);
+
+        const workerLeftTop = new Worker(new URL(`../../../../workers/lines/LeftTopLineWorker.ts`, import.meta.url), { type: "module" });
+        const workerRightBottom = new Worker(new URL(`../../../../workers/lines/RightBottomLineWorker.ts`, import.meta.url), { type: "module" });        
+        workerLeftTop.onmessage = (event) => {
+            if (event.data.type.value === WorkerActionType.DRAW_COMMAND.value) {
+                workerRenderer.postMessage({
+                    type: WorkerActionType.DRAW,
+                    command: event.data.drawCommand
+                });
             }
-            context.stroke();
         }
-
-        if (rightBottomLine.length > 1) {
-            context.strokeStyle = Color.BLUE;
-            context.lineWidth = 4;
-            context.beginPath();
-            for (let i = 0; i < rightBottomLine.length - 1; i++) {
-                context.moveTo(rightBottomLine[i].x, rightBottomLine[i].y);
-                context.lineTo(rightBottomLine[i + 1].x, rightBottomLine[i + 1].y);
+        workerRightBottom.onmessage = (event) => {
+            if (event.data.type.value === WorkerActionType.DRAW_COMMAND.value) {
+                workerRenderer.postMessage({
+                    type: WorkerActionType.DRAW,
+                    command: event.data.drawCommand
+                });
             }
-            context.stroke();
         }
-    }, [leftTopLine, rightBottomLine]);
 
-    const handleClick = (event: MouseEvent) => {
-        const rect = containerRef.current?.getBoundingClientRect();
-        if (!rect) return;
+        workersRef.current = { renderer: workerRenderer, leftTop: workerLeftTop, rightBottom: workerRightBottom };
+    }, []);
 
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-
-        setLeftTopLine((previous) => [...previous, new Point(x, y)]);
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const mirroredX = centerX - (x - centerX);
-        const mirroredY = centerY - (y - centerY);
-
-        setRightBottomLine((previous) => [...previous, new Point(mirroredX, mirroredY)]);
-    }
-
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            const props = getSquareProps(x, y);
-            squares.push(<JezzBallSquare key={`${x}, ${y}`} {...props} />);
-        }
-    }
-    
     return (
-        <div ref={containerRef} className="jezzball-container" onClick={handleClick} style={{ position: "relative" }}>
-            <canvas ref={canvasRef} width={width * 50} height={height * 50} style={{ position: "absolute", top: 0, left: 0, pointerEvents: "none" }}/>
-            <div ref={ref} className="jezzball-grid" style={{ gridTemplateColumns: `repeat(${width}, 1fr)`}}>
-                {squares}
-            </div>
+        <div className="jezzball-container"
+            ref={containerRef}
+            onContextMenu={jezzBallViewModel.handleContextMenu}
+            onMouseOver={jezzBallViewModel.handleMouseOver}
+            onMouseDown={jezzBallViewModel.handleMouseDown}
+            onMouseUp={jezzBallViewModel.handleMouseUp}>
+
+            <PatternCanvas ref={patternCanvasRef}
+                width={GRID_SIZE.width}
+                height={GRID_SIZE.height}
+                patternItemWidth={15}
+                patternItemHeight={12} />
+
+            <canvas id="game-canvas"
+                ref={gameCanvasRef}
+                width={GRID_SIZE.width}
+                height={GRID_SIZE.height}
+                style={{
+                    position: "absolute"
+                }} />
+
         </div>
     );
 }
