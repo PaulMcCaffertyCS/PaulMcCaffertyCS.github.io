@@ -6,7 +6,7 @@ import WorkerDrawCommandKind from "../../utils/workers/WorkerDrawCommandKind";
 import LineDirection from "./LineDirection";
 import type { LineMessageEvent } from "./LineMessageEvent";
 
-const TAG = "LeftTopLineWorker";
+const TAG = "TopLeftLineWorker";
 
 self.onmessage = (event: LineMessageEvent) => {
     const { type, direction, width, height, startX, startY, endX, endY } = event.data;
@@ -17,9 +17,11 @@ self.onmessage = (event: LineMessageEvent) => {
         let currentX = startX;
 
         const drawLine = () => {
+            Logger.d(TAG, `Paul: lineDirection.isVertical()=${lineDirection.isVertical()}`);
+            Logger.d(TAG, `Paul: currentY=${currentY}, endY=${endY}, currentX=${currentX}, endX=${endX}`);
             if (lineDirection.isVertical()) {
                 if (currentY >= endY) {
-                    Logger.d(TAG, `Draw LeftTop, currentY=${currentY}`);
+                    Logger.d(TAG, `Draw TopLeft, currentY=${currentY}`);
                     postMessage({
                         type: WorkerActionType.DRAW_COMMAND,
                         drawCommand: new WorkerDrawCommand(WorkerDrawCommandKind.LINE, Color.RED, startX, startY, endX, currentY)
@@ -27,10 +29,15 @@ self.onmessage = (event: LineMessageEvent) => {
 
                     currentY--;
                     requestAnimationFrame(drawLine);
+                } else {
+                    Logger.d(TAG, `Completed`);
+                    postMessage({
+                        type: WorkerActionType.COMPLETE
+                    })
                 }
             } else {
                 if (currentX >= endX) {
-                    Logger.d(TAG, `Draw LeftTop, currentX=${currentX}`);
+                    Logger.d(TAG, `Draw TopLeft, currentX=${currentX}`);
                     postMessage({
                         type: WorkerActionType.DRAW_COMMAND,
                         drawCommand: new WorkerDrawCommand(WorkerDrawCommandKind.LINE, Color.RED, startX, startY, currentX, endY)
@@ -38,6 +45,11 @@ self.onmessage = (event: LineMessageEvent) => {
 
                     currentX--;
                     requestAnimationFrame(drawLine);
+                } else {
+                    Logger.d(TAG, `Completed`);
+                    postMessage({
+                        type: WorkerActionType.COMPLETE
+                    })
                 }
             }
         };

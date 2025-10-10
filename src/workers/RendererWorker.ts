@@ -1,17 +1,6 @@
-import Logger from "../utils/log/Logger";
+import type { RenderMessageEvent } from "./RenderMessageEvent";
 import WorkerActionType from "../utils/workers/WorkerActionType";
-import type WorkerDrawCommand from "../utils/workers/WorkerDrawCommand";
 import WorkerDrawCommandKind from "../utils/workers/WorkerDrawCommandKind";
-
-interface RenderMessageEvent extends MessageEvent {
-    data: {
-        type: WorkerActionType,
-        canvas: OffscreenCanvas,
-        width: number,
-        height: number,
-        command: WorkerDrawCommand
-    };
-}
 
 const TAG = "RendererWorker";
 
