@@ -1,12 +1,14 @@
 import type { FC } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import "./JezzBallGrid.css";
 import type JezzBallGridProps from "../viewmodel/JezzBallGridProps";
-import Size from "../../../../utils/javascript/Size";
-import Logger from "../../../../utils/log/Logger";
+import Size from "../../../../utils/typescript/Size";
 import PatternCanvas from "../../../../utils/ui/PatternCanvas";
-import WorkerActionType from "../../../../utils/workers/WorkerActionType";
 import JezzBallViewModel from "../viewmodel/JezzBallViewModel";
+import Logger from "../../../../utils/log/Logger";
+import RendererWorker from "../../../../workers/RendererWorker.ts?worker";
+import TopLeftLineWorker from "../../../../workers/lines/TopLeftLineWorker.ts?worker";
+import BottomRightLineWorker from "../../../../workers/lines/BottomRightLineWorker.ts?worker";
 
 const TAG = "JezzBallGrid";
 
@@ -17,12 +19,12 @@ const JezzBallGrid: FC<JezzBallGridProps> = () => {
     const gameCanvasRef = useRef<HTMLCanvasElement | null>(null);
     const workersRef = useRef<{
         renderer: Worker | null;
-        leftTop: Worker | null;
-        rightBottom: Worker | null;
+        topLeft: Worker | null;
+        bottomRight: Worker | null;
     }>({
         renderer: null,
-        leftTop: null,
-        rightBottom: null
+        topLeft: null,
+        bottomRight: null
     });
     const jezzBallViewModel = new JezzBallViewModel(
         containerRef,
@@ -34,7 +36,7 @@ const JezzBallGrid: FC<JezzBallGridProps> = () => {
 
     useEffect(() => {
         if (initRef.current) return;
-        initRef.current = true
+        initRef.current = true;
 
         const patternCanvas = patternCanvasRef.current;
         if (!patternCanvas) {
@@ -51,36 +53,13 @@ const JezzBallGrid: FC<JezzBallGridProps> = () => {
         gameCanvas.style.left = `${patternCanvas.getBoundingClientRect().left}px`;
         gameCanvas.style.top = `${patternCanvas.getBoundingClientRect().top}px`;
 
-        const offscreenCanvas = gameCanvas.transferControlToOffscreen();
+        const workerRenderer = new RendererWorker();
+        const workerTopLeft = new TopLeftLineWorker();
+        const workerBottomRight = new BottomRightLineWorker();     
+        
+        workersRef.current = { renderer: workerRenderer, topLeft: workerTopLeft, bottomRight: workerBottomRight };
 
-        const workerRenderer = new Worker(new URL(`../../../../workers/RendererWorker.ts`, import.meta.url), { type: "module" });
-        workerRenderer.postMessage({
-            type: WorkerActionType.INIT,
-            canvas: offscreenCanvas,
-            width: gameCanvas.width,
-            height: gameCanvas.height
-        }, [offscreenCanvas]);
-
-        const workerLeftTop = new Worker(new URL(`../../../../workers/lines/LeftTopLineWorker.ts`, import.meta.url), { type: "module" });
-        const workerRightBottom = new Worker(new URL(`../../../../workers/lines/RightBottomLineWorker.ts`, import.meta.url), { type: "module" });        
-        workerLeftTop.onmessage = (event) => {
-            if (event.data.type.value === WorkerActionType.DRAW_COMMAND.value) {
-                workerRenderer.postMessage({
-                    type: WorkerActionType.DRAW,
-                    command: event.data.drawCommand
-                });
-            }
-        }
-        workerRightBottom.onmessage = (event) => {
-            if (event.data.type.value === WorkerActionType.DRAW_COMMAND.value) {
-                workerRenderer.postMessage({
-                    type: WorkerActionType.DRAW,
-                    command: event.data.drawCommand
-                });
-            }
-        }
-
-        workersRef.current = { renderer: workerRenderer, leftTop: workerLeftTop, rightBottom: workerRightBottom };
+        jezzBallViewModel.init();
     }, []);
 
     return (

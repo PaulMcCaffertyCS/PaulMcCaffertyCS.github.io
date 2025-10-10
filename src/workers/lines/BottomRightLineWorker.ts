@@ -6,7 +6,7 @@ import WorkerDrawCommandKind from "../../utils/workers/WorkerDrawCommandKind";
 import LineDirection from "./LineDirection";
 import type { LineMessageEvent } from "./LineMessageEvent";
 
-const TAG = "RightBottomLineWorker";
+const TAG = "BottomRightLineWorker";
 
 self.onmessage = (event: LineMessageEvent) => {
     const { type, direction, width, height, startX, startY, endX, endY } = event.data;
@@ -19,7 +19,7 @@ self.onmessage = (event: LineMessageEvent) => {
         const drawLine = () => {
             if (lineDirection.isVertical()) {
                 if (currentY <= endY) {
-                    Logger.d(TAG, `Draw RightBottom, currentY=${currentY}`);
+                    Logger.d(TAG, `Draw BottomRight, currentY=${currentY}`);
                     postMessage({
                         type: WorkerActionType.DRAW_COMMAND,
                         drawCommand: new WorkerDrawCommand(WorkerDrawCommandKind.LINE, Color.BLUE, startX, startY, endX, currentY)
@@ -27,10 +27,15 @@ self.onmessage = (event: LineMessageEvent) => {
 
                     currentY++;
                     requestAnimationFrame(drawLine);
+                } else {
+                    Logger.d(TAG, `Completed`);
+                    postMessage({
+                        type: WorkerActionType.COMPLETE
+                    })
                 }
             } else {
                 if (currentX <= endX) {
-                    Logger.d(TAG, `Draw RightBottom, currentX=${currentX}`);
+                    Logger.d(TAG, `Draw BottomRight, currentX=${currentX}`);
                     postMessage({
                         type: WorkerActionType.DRAW_COMMAND,
                         drawCommand: new WorkerDrawCommand(WorkerDrawCommandKind.LINE, Color.BLUE, startX, startY, currentX, endY)
@@ -38,6 +43,11 @@ self.onmessage = (event: LineMessageEvent) => {
 
                     currentX++;
                     requestAnimationFrame(drawLine);
+                } else {
+                    Logger.d(TAG, `Completed`);
+                    postMessage({
+                        type: WorkerActionType.COMPLETE
+                    })
                 }
             }
         };
