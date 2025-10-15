@@ -17,11 +17,9 @@ self.onmessage = (event: LineMessageEvent) => {
         let currentX = startX;
 
         const drawLine = () => {
-            Logger.d(TAG, `Paul: lineDirection.isVertical()=${lineDirection.isVertical()}`);
-            Logger.d(TAG, `Paul: currentY=${currentY}, endY=${endY}, currentX=${currentX}, endX=${endX}`);
             if (lineDirection.isVertical()) {
                 if (currentY >= endY) {
-                    Logger.d(TAG, `Draw TopLeft, currentY=${currentY}`);
+                    // Logger.d(TAG, `Draw TopLeft, currentY=${currentY}`);
                     postMessage({
                         type: WorkerActionType.DRAW_COMMAND,
                         drawCommand: new WorkerDrawCommand(WorkerDrawCommandKind.LINE, Color.RED, startX, startY, endX, currentY)
@@ -32,12 +30,16 @@ self.onmessage = (event: LineMessageEvent) => {
                 } else {
                     Logger.d(TAG, `Completed`);
                     postMessage({
-                        type: WorkerActionType.COMPLETE
-                    })
+                        type: WorkerActionType.COMPLETE,
+                        startX: startX,
+                        startY: startY,
+                        endX: endX,
+                        endY: endY
+                    });
                 }
             } else {
                 if (currentX >= endX) {
-                    Logger.d(TAG, `Draw TopLeft, currentX=${currentX}`);
+                    // Logger.d(TAG, `Draw TopLeft, currentX=${currentX}`);
                     postMessage({
                         type: WorkerActionType.DRAW_COMMAND,
                         drawCommand: new WorkerDrawCommand(WorkerDrawCommandKind.LINE, Color.RED, startX, startY, currentX, endY)
@@ -48,8 +50,12 @@ self.onmessage = (event: LineMessageEvent) => {
                 } else {
                     Logger.d(TAG, `Completed`);
                     postMessage({
-                        type: WorkerActionType.COMPLETE
-                    })
+                        type: WorkerActionType.COMPLETE,
+                        startX: startX,
+                        startY: startY,
+                        endX: endX,
+                        endY: endY
+                    });
                 }
             }
         };

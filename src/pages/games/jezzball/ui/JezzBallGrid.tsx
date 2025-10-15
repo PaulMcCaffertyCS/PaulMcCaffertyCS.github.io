@@ -2,7 +2,6 @@ import type { FC } from "react";
 import { useEffect, useRef } from "react";
 import "./JezzBallGrid.css";
 import type JezzBallGridProps from "../viewmodel/JezzBallGridProps";
-import Size from "../../../../utils/typescript/Size";
 import PatternCanvas from "../../../../utils/ui/PatternCanvas";
 import JezzBallViewModel from "../viewmodel/JezzBallViewModel";
 import Logger from "../../../../utils/log/Logger";
@@ -32,7 +31,6 @@ const JezzBallGrid: FC<JezzBallGridProps> = () => {
         gameCanvasRef,
         workersRef
     );
-    const GRID_SIZE = new Size(500, 275);
 
     useEffect(() => {
         if (initRef.current) return;
@@ -71,15 +69,15 @@ const JezzBallGrid: FC<JezzBallGridProps> = () => {
             onMouseUp={jezzBallViewModel.handleMouseUp}>
 
             <PatternCanvas ref={patternCanvasRef}
-                width={GRID_SIZE.width}
-                height={GRID_SIZE.height}
-                patternItemWidth={15}
-                patternItemHeight={12} />
+                width={jezzBallViewModel.GRID_SIZE.width}
+                height={jezzBallViewModel.GRID_SIZE.height}
+                patternItemWidth={jezzBallViewModel.PATTERN_ITEM_SIZE.width}
+                patternItemHeight={jezzBallViewModel.PATTERN_ITEM_SIZE.height} />
 
             <canvas id="game-canvas"
                 ref={gameCanvasRef}
-                width={GRID_SIZE.width}
-                height={GRID_SIZE.height}
+                width={jezzBallViewModel.GRID_SIZE.width}
+                height={jezzBallViewModel.GRID_SIZE.height}
                 style={{
                     position: "absolute"
                 }} />
