@@ -1,6 +1,7 @@
 import type { RenderMessageEvent } from "./RenderMessageEvent";
 import WorkerActionType from "../utils/workers/WorkerActionType";
 import WorkerDrawCommandKind from "../utils/workers/WorkerDrawCommandKind";
+import { LINE_WIDTH } from "../pages/games/jezzball/helper/JezzBallHelper";
 
 const TAG = "RendererWorker";
 
@@ -24,8 +25,9 @@ self.onmessage = (event: RenderMessageEvent) => {
                 context = canvas.getContext("2d");
             }
             const ctxt = context as OffscreenCanvasRenderingContext2D;
+            ctxt.imageSmoothingEnabled = false;
             ctxt.strokeStyle = command.color;
-            ctxt.lineWidth = 2;
+            ctxt.lineWidth = LINE_WIDTH;
             ctxt.beginPath();
             ctxt.moveTo(command.startX, command.startY);
             ctxt.lineTo(command.endX, command.endY);

@@ -19,7 +19,7 @@ self.onmessage = (event: LineMessageEvent) => {
         const drawLine = () => {
             if (lineDirection.isVertical()) {
                 if (currentY <= endY) {
-                    Logger.d(TAG, `Draw BottomRight, currentY=${currentY}`);
+                    // Logger.d(TAG, `Draw BottomRight, currentY=${currentY}`);
                     postMessage({
                         type: WorkerActionType.DRAW_COMMAND,
                         drawCommand: new WorkerDrawCommand(WorkerDrawCommandKind.LINE, Color.BLUE, startX, startY, endX, currentY)
@@ -30,12 +30,16 @@ self.onmessage = (event: LineMessageEvent) => {
                 } else {
                     Logger.d(TAG, `Completed`);
                     postMessage({
-                        type: WorkerActionType.COMPLETE
-                    })
+                        type: WorkerActionType.COMPLETE,
+                        startX: startX,
+                        startY: startY,
+                        endX: endX,
+                        endY: endY
+                    });
                 }
             } else {
                 if (currentX <= endX) {
-                    Logger.d(TAG, `Draw BottomRight, currentX=${currentX}`);
+                    // Logger.d(TAG, `Draw BottomRight, currentX=${currentX}`);
                     postMessage({
                         type: WorkerActionType.DRAW_COMMAND,
                         drawCommand: new WorkerDrawCommand(WorkerDrawCommandKind.LINE, Color.BLUE, startX, startY, currentX, endY)
@@ -46,8 +50,12 @@ self.onmessage = (event: LineMessageEvent) => {
                 } else {
                     Logger.d(TAG, `Completed`);
                     postMessage({
-                        type: WorkerActionType.COMPLETE
-                    })
+                        type: WorkerActionType.COMPLETE,
+                        startX: startX,
+                        startY: startY,
+                        endX: endX,
+                        endY: endY
+                    });
                 }
             }
         };

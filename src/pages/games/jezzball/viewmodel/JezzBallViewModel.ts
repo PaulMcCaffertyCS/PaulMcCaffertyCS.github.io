@@ -4,10 +4,19 @@ import Point from "../../../../utils/typescript/Point";
 import WorkerActionType from "../../../../utils/workers/WorkerActionType";
 import LineDirection from "../../../../workers/lines/LineDirection";
 import type { LineReceiverMessageEvent } from "../../../../workers/lines/LineReceiverMessageEvent";
+import WorkerDrawCommand from "../../../../utils/workers/WorkerDrawCommand";
+import WorkerDrawCommandKind from "../../../../utils/workers/WorkerDrawCommandKind";
+import Color from "../../../../utils/color/Color";
+import Size from "../../../../utils/typescript/Size";
+import { LINE_WIDTH } from "../helper/JezzBallHelper";
+import { keepWithinRange } from "../../../../utils/typescript/MathUtils";
 
 const TAG = "JezzBallViewModel";
 
 class JezzBallViewModel {
+    GRID_SIZE = new Size(500, 275);
+    PATTERN_ITEM_SIZE = new Size(15, 12);
+
     private containerRef: RefObject<HTMLDivElement | null>;
     private patternCanvasRef: RefObject<HTMLCanvasElement | null>;
     private gameCanvasRef: RefObject<HTMLCanvasElement | null>;
@@ -19,6 +28,7 @@ class JezzBallViewModel {
     private lineDirection: LineDirection = LineDirection.VERTICAL;
     private isDrawingTopLeft: boolean = false;
     private isDrawingBottomRight: boolean = false;
+    private grid: number[][];
 
     constructor(
         containerRef: RefObject<HTMLDivElement | null>, 
@@ -34,6 +44,8 @@ class JezzBallViewModel {
         this.patternCanvasRef = patternCanvasRef;
         this.gameCanvasRef = gameCanvasRef;
         this.workersRef = workersRef;
+        this.grid = new Array(this.GRID_SIZE.width).fill(0).map(() => new Array(this.GRID_SIZE.height).fill(0));
+        Logger.d(TAG, `grid.length=${this.grid.length}, grid[n].length=${this.grid[0].length}`);
     }
 
     init() {
@@ -58,7 +70,6 @@ class JezzBallViewModel {
         }, [offscreenCanvas]);
 
         this.workersRef.current.topLeft.onmessage = (event: LineReceiverMessageEvent) => {
-            Logger.d(TAG, `Paul: event.data=${event.data}`);
             switch (event.data.type.value) {
                 case WorkerActionType.DRAW_COMMAND.value: {
                     this.workersRef.current.renderer!.postMessage({
@@ -69,6 +80,18 @@ class JezzBallViewModel {
                 }
                 case WorkerActionType.COMPLETE.value: {
                     this.isDrawingTopLeft = false;
+                    this.workersRef.current.renderer!.postMessage({
+                        type: WorkerActionType.DRAW,
+                        command: new WorkerDrawCommand(
+                            WorkerDrawCommandKind.LINE,
+                            Color.BLACK,
+                            event.data.startX,
+                            event.data.startY,
+                            event.data.endX,
+                            event.data.endY
+                        )
+                    });
+                    this.addWallSegment(event.data.startX, event.data.startY, event.data.endX, event.data.endY);
                     break;
                 }
                 default: break;
@@ -76,7 +99,6 @@ class JezzBallViewModel {
         }
 
         this.workersRef.current.bottomRight.onmessage = (event: LineReceiverMessageEvent) => {
-            Logger.d(TAG, `Paul: event.data=${event.data}`);
             switch (event.data.type.value) {
                 case WorkerActionType.DRAW_COMMAND.value: {
                     this.workersRef.current.renderer!.postMessage({
@@ -87,6 +109,18 @@ class JezzBallViewModel {
                 }
                 case WorkerActionType.COMPLETE.value: {
                     this.isDrawingBottomRight = false;
+                    this.workersRef.current.renderer!.postMessage({
+                        type: WorkerActionType.DRAW,
+                        command: new WorkerDrawCommand(
+                            WorkerDrawCommandKind.LINE,
+                            Color.BLACK,
+                            event.data.startX,
+                            event.data.startY,
+                            event.data.endX,
+                            event.data.endY
+                        )
+                    });
+                    this.addWallSegment(event.data.startX, event.data.startY, event.data.endX, event.data.endY);
                     break;
                 }
                 default: break;
@@ -104,7 +138,7 @@ class JezzBallViewModel {
     }
 
     handleMouseUp = (event: MouseEvent) => {
-        Logger.d(TAG, `isDrawingTopLeft=${this.isDrawingTopLeft}, isDrawingBottomRight=${this.isDrawingBottomRight}`);
+        Logger.d(TAG, `Raw mouse click location: x=${event.clientX}, y=${event.clientY}`);
         if (event.button === 0 && (!this.isDrawingTopLeft || !this.isDrawingBottomRight)) {
             const canvas = this.gameCanvasRef.current;
             if (!canvas || !this.workersRef.current.topLeft || !this.workersRef.current.bottomRight) return;
@@ -112,11 +146,15 @@ class JezzBallViewModel {
             const rect = canvas.getBoundingClientRect();
             if (!rect) return;
 
-            const clickPoint = new Point(event.clientX - rect.left, event.clientY - rect.top);
+            const clickPoint = new Point(Math.round(event.clientX - rect.left), Math.round(event.clientY - rect.top));
+            if (this.isBlocked(clickPoint.x, clickPoint.y)) {
+                Logger.d(TAG, `Blocked: x=${event.clientX}, y=${event.clientY}`);
+                return;
+            }
+
             const topLeftEndPoint = this.lineDirection.isVertical() ? new Point(clickPoint.x, 0) : new Point(0, clickPoint.y);
             const bottomRightEndPoint = this.lineDirection.isVertical() ? new Point(clickPoint.x, rect.height) : new Point(rect.width, clickPoint.y);
 
-            Logger.d(TAG, `isDrawingTopLeft=${this.isDrawingTopLeft}, isDrawingBottomRight=${this.isDrawingBottomRight}`);
             if (!this.isDrawingTopLeft) {
                 this.isDrawingTopLeft = true;
                 this.workersRef.current.topLeft.postMessage({
@@ -166,6 +204,34 @@ class JezzBallViewModel {
             default:
                 break;
         }
+    }
+
+    private addWallSegment(startX: number, startY: number, endX: number, endY: number) {
+        Logger.d(TAG, `startX=${startX}, startY=${startY}, endX=${endX}, endY=${endY}`);
+
+        const isVertical = startX == endX;
+        if (isVertical) {
+            const blockOffStartX = keepWithinRange(startX - Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.width);
+            const blockOffStartY = startY <= endY ? startY : endY;
+            const blockOffEndX = keepWithinRange(endX + Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.width);
+            const blockOffEndY = startY <= endY ? endY : startY;
+            for (let x = blockOffStartX; x <= blockOffEndX; x++) {
+                this.grid[x].fill(1, blockOffStartY, blockOffEndY);
+            }
+        } else {
+            const blockOffStartY = keepWithinRange(startY - Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.height);
+            const blockOffEndY = endY + Math.floor(LINE_WIDTH / 2);
+            // Logger.d(TAG, `blockOffStartY=${blockOffStartY}, blockOffEndY=${blockOffEndY}`);
+            for (let x = 0; x < this.GRID_SIZE.width; x++) {
+                this.grid[x].fill(1, blockOffStartY, blockOffEndY);
+            }
+        }
+    }
+
+    private isBlocked(x: number, y: number): boolean {
+        const isBlocked = this.grid[x][y] === 1;
+        Logger.d(TAG, `isBlocked(grid[${x}][${y}])=${isBlocked}`)
+        return isBlocked;
     }
 
     private refreshCursor() {
