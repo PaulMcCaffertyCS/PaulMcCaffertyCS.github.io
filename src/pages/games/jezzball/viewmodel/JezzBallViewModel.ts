@@ -91,7 +91,7 @@ class JezzBallViewModel {
                             event.data.endY
                         )
                     });
-                    this.addWallSegment(event.data.startX, event.data.startY, event.data.endX, event.data.endY);
+                    this.addWallSegment(true, event.data.startX, event.data.startY, event.data.endX, event.data.endY);
                     break;
                 }
                 default: break;
@@ -120,7 +120,7 @@ class JezzBallViewModel {
                             event.data.endY
                         )
                     });
-                    this.addWallSegment(event.data.startX, event.data.startY, event.data.endX, event.data.endY);
+                    this.addWallSegment(false, event.data.startX, event.data.startY, event.data.endX, event.data.endY);
                     break;
                 }
                 default: break;
@@ -133,7 +133,7 @@ class JezzBallViewModel {
         event.stopPropagation();
     }
 
-    handleMouseOver = (event: MouseEvent) => {
+    handleMouseOver = (_: MouseEvent) => {
         this.refreshCursor();
     }
 
@@ -206,24 +206,33 @@ class JezzBallViewModel {
         }
     }
 
-    private addWallSegment(startX: number, startY: number, endX: number, endY: number) {
+    private addWallSegment(isTopLeftLine: boolean, startX: number, startY: number, endX: number, endY: number) {
         Logger.d(TAG, `startX=${startX}, startY=${startY}, endX=${endX}, endY=${endY}`);
 
         const isVertical = startX == endX;
         if (isVertical) {
-            const blockOffStartX = keepWithinRange(startX - Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.width);
-            const blockOffStartY = startY <= endY ? startY : endY;
-            const blockOffEndX = keepWithinRange(endX + Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.width);
-            const blockOffEndY = startY <= endY ? endY : startY;
-            for (let x = blockOffStartX; x <= blockOffEndX; x++) {
-                this.grid[x].fill(1, blockOffStartY, blockOffEndY);
+            const wallStartX = keepWithinRange(startX - Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.width);
+            const wallEndX = keepWithinRange(endX + Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.width);
+            if (isTopLeftLine) {
+                for (let x = wallStartX; x <= wallEndX; x++) {
+                    this.grid[x].fill(1, endY, startY);
+                }
+            } else {
+                for (let x = wallStartX; x <= wallEndX; x++) {
+                    this.grid[x].fill(1, startY, endY);
+                }
             }
         } else {
-            const blockOffStartY = keepWithinRange(startY - Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.height);
-            const blockOffEndY = endY + Math.floor(LINE_WIDTH / 2);
-            // Logger.d(TAG, `blockOffStartY=${blockOffStartY}, blockOffEndY=${blockOffEndY}`);
-            for (let x = 0; x < this.GRID_SIZE.width; x++) {
-                this.grid[x].fill(1, blockOffStartY, blockOffEndY);
+            const wallStartY = keepWithinRange(startY - Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.height);
+            const wallEndY = keepWithinRange(endY + Math.floor(LINE_WIDTH / 2), this.GRID_SIZE.height);
+            if (isTopLeftLine) {
+                for (let x = endX; x <= startX; x++) {
+                    this.grid[x].fill(1, wallStartY, wallEndY);
+                }
+            } else {
+                for (let x = startX; x < endX; x++) {
+                    this.grid[x].fill(1, wallStartY, wallEndY);
+                }
             }
         }
     }
