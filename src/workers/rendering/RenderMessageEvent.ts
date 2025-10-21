@@ -1,5 +1,5 @@
-import type WorkerActionType from "../utils/workers/WorkerActionType";
-import type WorkerDrawCommand from "../utils/workers/WorkerDrawCommand";
+import type WorkerActionType from "../../utils/workers/WorkerActionType";
+import type WorkerDrawCommand from "../../utils/workers/WorkerDrawCommand";
 
 interface RenderMessageEvent extends MessageEvent {
     data: {
