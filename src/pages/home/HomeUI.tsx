@@ -1,7 +1,7 @@
-import Project from "../../components/project/Project";
-import ProjectOption from "../../components/project/ProjectOption";
+import Project from "../projects/ui/Project";
+import ProjectOption from "../projects/viewmodel/ProjectOption";
 
-const Home = () => {
+const HomeUI = () => {
     const projectCWU = ProjectOption.CWU;
     const projectFunction = ProjectOption.FUNCTION_LRL;
 
@@ -18,8 +18,8 @@ const Home = () => {
                     <h2 id="project-option-section-title-text" className="gradient-text">Projects</h2>
                 </div>
                 <div className="project-options">
-                    <Project title={projectCWU.title} brief={projectCWU.brief} />
-                    <Project title={projectFunction.title} brief={projectFunction.brief} />
+                    <Project title={projectCWU.title} brief={projectCWU.brief} link={projectCWU.link} preview={projectCWU.preview} />
+                    <Project title={projectFunction.title} brief={projectFunction.brief} link={projectFunction.link} preview={projectFunction.preview} />
                 </div>
             </div>
             <div id="circuit-background"></div>
@@ -27,4 +27,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomeUI;

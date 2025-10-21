@@ -21,4 +21,8 @@ export default class Point {
     copy(x: number = this.x, y: number = this.y): Point {
         return new Point(x, y);
     }
+
+    toString(): string {
+        return `Point(x: ${this.x}, y: ${this.y})`;
+    }
 }
