@@ -1,0 +1,4 @@
+#pattern-canvas {
+    pointer-events: none;
+    display: block;
+}

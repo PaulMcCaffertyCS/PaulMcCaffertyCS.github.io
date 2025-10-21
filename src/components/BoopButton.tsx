@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Point from "../utils/javascript/Point";
+import Point from "../utils/typescript/Point";
 import { updatePosition } from "../utils/html/ElementUtils";
 import "./BoopButton.css";
 
