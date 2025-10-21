@@ -5,9 +5,9 @@ import type JezzBallGridProps from "../viewmodel/JezzBallGridProps";
 import PatternCanvas from "../../../../utils/ui/PatternCanvas";
 import JezzBallViewModel from "../viewmodel/JezzBallViewModel";
 import Logger from "../../../../utils/log/Logger";
-import RendererWorker from "../../../../workers/RendererWorker.ts?worker";
-import TopLeftLineWorker from "../../../../workers/lines/TopLeftLineWorker.ts?worker";
-import BottomRightLineWorker from "../../../../workers/lines/BottomRightLineWorker.ts?worker";
+import RendererWorker from "../../../../workers/rendering/RendererWorker.ts?worker";
+import TopLeftLineWorker from "../../../../workers/line/TopLeftLineWorker.ts?worker";
+import BottomRightLineWorker from "../../../../workers/line/BottomRightLineWorker.ts?worker";
 
 const TAG = "JezzBallGrid";
 
