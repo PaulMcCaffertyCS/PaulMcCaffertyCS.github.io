@@ -1,4 +1,4 @@
-const Contact = () => {
+const ContactUI = () => {
     return (
         <div id="page-container">
             <div id="page-title">
@@ -14,4 +14,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default ContactUI;

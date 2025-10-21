@@ -1,4 +1,4 @@
-import Point from "../javascript/Point";
+import Point from "../typescript/Point";
 
 function updatePosition(element: HTMLElement, point: Point) {
     // element.style.position = "absolute";
