@@ -6,23 +6,31 @@ const HomeUI = () => {
     const projectFunction = ProjectOption.FUNCTION_LRL;
 
     return (
-        <div id="page-container">
-            <div id="page-title">
-                <h1 id="page-title-name" className="gradient-text">Paul McCafferty</h1>
-                <p id="page-title-intro">
-                    A proactive and driven individual, I bring five years of full-stack, professional experience and a focus on curiosity to my projects.
+        <div className="page-container">
+            <div className="page-title-container">
+                <h1 id="page-title" className="page-title gradient-text">Paul McCafferty</h1>
+                <p className="page-title-intro">
+                    {`A proactive and driven individual, I bring a focus on curiosity to my projects. I am always seeking to expand my knowledge in the pursuit of the most effective solutions, with consideration for the user experience, efficient development, and clean code.\n  
+                    Leveraging knowledge of application development and programming with my troubleshooting skills and positive team collaboration, I am confident I can excel in any software developer role.`}
                 </p>
             </div>
-            <div id="page-body">
-                <div id="project-option-section-title">
+            <div className="page-body">
+                <div className="project-option-section-title-container">
                     <h2 id="project-option-section-title-text" className="gradient-text">Projects</h2>
                 </div>
                 <div className="project-options">
-                    <Project title={projectCWU.title} brief={projectCWU.brief} link={projectCWU.link} preview={projectCWU.preview} />
-                    <Project title={projectFunction.title} brief={projectFunction.brief} link={projectFunction.link} preview={projectFunction.preview} />
+                    <Project title={projectCWU.title}
+                        brief={projectCWU.brief}
+                        preview={projectCWU.preview}
+                        navLink={projectCWU.navLink}
+                        link={projectCWU.link} />
+                    <Project title={projectFunction.title}
+                        brief={projectFunction.brief}
+                        preview={projectFunction.preview}
+                        navLink={projectFunction.navLink}
+                        link={projectFunction.link} />
                 </div>
             </div>
-            <div id="circuit-background"></div>
         </div>
     );
 };

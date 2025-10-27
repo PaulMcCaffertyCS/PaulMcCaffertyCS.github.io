@@ -1,13 +1,13 @@
 const ContactUI = () => {
     return (
-        <div id="page-container">
-            <div id="page-title">
-                <h1 id="page-title-name" className="gradient-text">Contact</h1>
-                <p id="page-title-intro">
+        <div className="page-container">
+            <div className="page-title-container">
+                <h1 id="page-title" className="page-title gradient-text">Contact</h1>
+                <p className="page-title-intro">
                     I'll be adding ways to contact me here soon.
                 </p>
             </div>
-            <div id="page-body">
+            <div className="page-body">
             </div>
             <div id="circuit-background"></div>
         </div>

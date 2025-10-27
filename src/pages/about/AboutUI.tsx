@@ -1,13 +1,13 @@
 const AboutUI = () => {
     return (
-        <div id="page-container">
-            <div id="page-title">
-                <h1 id="page-title-name" className="gradient-text">About</h1>
-                <p id="page-title-intro">
+        <div className="page-container">
+            <div className="page-title-container">
+                <h1 id="page-title" className="page-title gradient-text">About</h1>
+                <p className="page-title-intro">
                     Who Am I?
                 </p>
             </div>
-            <div id="page-body">
+            <div className="page-body">
             </div>
             <div id="circuit-background"></div>
         </div>
