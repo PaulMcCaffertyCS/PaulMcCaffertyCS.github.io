@@ -1,12 +1,28 @@
+/**
+ * ELEMENT STYLING
+ */
+
 html {
-  height: 100%;
   width: 100%;
+  height: 100%;
   font-family: "Montserrat", sans-serif;
 }
 
 body {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
   margin: 0px;
+  align-items: center;
+
+  background-image: url("./assets/images/backgrounds/green_circuitry_1200x1200.jpg");
+  background-color: rgba(0, 0, 0, 0.96);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 iframe {
@@ -15,6 +31,12 @@ iframe {
   margin: 0px;
   padding: 0px;
   background-color: rgb(10, 182, 76);
+}
+
+video {
+  border: none;
+  margin: 0px;
+  padding: 0px;
 }
 
 h1 {
@@ -29,11 +51,35 @@ h2 {
   color: rgb(255, 255, 255);
 }
 
+h3 {
+  color: rgb(255, 255, 255);
+}
+
 p {
   color: rgb(255, 255, 255);
 }
 
 
+
+/**
+ * CLASS STYLING
+ */
+
+/**
+ * Element Type Styling
+ */
+.divider-horizontal {
+  width: 500px;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
+  margin: 25px 5px;
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 500px;
+  background-color: rgb(255, 255, 255);
+}
 
 .gradient-text {
   background: radial-gradient(circle, rgb(5, 182, 73) 0%, rgb(45, 184, 115) 60%, rgb(100, 152, 187) 100%);
@@ -45,10 +91,75 @@ p {
   display: inline-block;
 }
 
+.hyperlink-text {
+  text-align: center;
+  white-space: pre-line;
+  line-height: 32px;
+}
+
+.paragraph {
+  margin: 0px 50px;
+  white-space: pre-line;
+}
+
+.side-by-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 15px
+}
+
+
+/**
+ * Section Styling
+ */
+/* .page-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-image: url("./assets/images/backgrounds/green_circuitry_1200x1200.jpg");
+  background-color: rgba(0, 0, 0, 0.96);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+} */
+
+.page-title-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.page-title-intro {
+  width: 650px;
+  margin-top: 20px;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.page-body {
+  flex: 7;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .project-options {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-option {
@@ -101,6 +212,35 @@ p {
 .project-option-brief {
   padding: 0px 20px;
   color: white;
+  white-space: pre-line;
+}
+
+.project-overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-video-title {
+  padding: 0px 10px 0px;
+}
+
+.project-video-wide {
+  width: 600px;
+  height: 400px;
+  margin: 25px;
+}
+
+.project-video-tall {
+  width: 250px;
+  height: 500px;
+  margin: 15px;
+}
+
+.project-about {
+  width: 65%;
+  white-space: pre-line;
 }
 
 /* .coming-soon-overlay {
@@ -125,54 +265,6 @@ p {
 
 
 
-#navigation-menu {
+#root {
   width: 100%;
-  height: 60px;
-  margin: 0px;
-  border: 0px;
-  margin-bottom: 0px;
-}
-
-#page-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#page-title {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-#page-title-intro {
-  width: 650px;
-  margin-top: 20px;
-  text-align: center;
-}
-
-#page-body {
-  flex: 7;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-#circuit-background {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
-  background-image: url("./assets/images/green_circuitry_1200x1200.jpg");
-  background-color: rgba(0, 0, 0, 0.96);
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
 }

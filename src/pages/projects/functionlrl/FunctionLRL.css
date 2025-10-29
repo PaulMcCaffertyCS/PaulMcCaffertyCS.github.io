@@ -1,0 +1,19 @@
+.project-image {
+    width: 250px;
+    height: 500px;
+    margin: 15px;
+}
+
+
+
+#project-videos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#project-images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
