@@ -1,0 +1,103 @@
+form p {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    transition: opacity 0.3s ease;
+}
+
+form p:nth-of-type(1) {
+    color: #00ff88;
+}
+
+form p:nth-of-type(2) {
+    color: #ff5f5f;
+}
+
+
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: min(90%, 600px);
+    gap: 1rem;
+    padding: 2.5rem;
+    margin: 3rem auto;
+    background-color: rgba(0, 15, 30, 0.6);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 255, 128, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-field:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 255, 128, 0.15);
+}
+
+.input-field,
+.textarea-field {
+    width: 100%;
+    background-color: rgba(0, 30, 60, 0.7);
+    padding: 0.75rem 1rem;
+    color: #e0f8ff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 255, 128, 0.3);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.input-field:focus,
+.textarea-field:focus {
+    border-color: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 128, 0.3);
+    transform: translateY(-1px);
+}
+
+.textarea-field {
+    min-height: 220px;
+    resize: vertical;
+}
+
+.submit-button {
+    margin-top: 1rem;
+    color: #001020;
+    background: linear-gradient(90deg, #00ff88, #00ccff);
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 255, 128, 0.3);
+}
+
+.submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+
+/* Subtle floating animation for background theme cohesion */
+@keyframes float-glow {
+    0%, 100% {
+        box-shadow: 0 0 12px rgba(0, 255, 128, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(0, 255, 128, 0.4);
+    }
+}

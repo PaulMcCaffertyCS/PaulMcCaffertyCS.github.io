@@ -1,5 +1,5 @@
-import jezzBallPreview from "../../../assets/images/JezzBallPreview.png";
-import greenCircuitry from "../../../assets/images/green_circuitry_1200x1200.jpg";
+import jezzBallPreview from "../../../assets/images/previews/JezzBallPreview.png";
+import greenCircuitry from "../../../assets/images/backgrounds/green_circuitry_1200x1200.jpg";
 
 export default class GameOption {
     title: string;

@@ -1,0 +1,13 @@
+.footnote-image-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.footnote-image-image {
+    width: 250px;
+    height: 500px;
+}
+
+.footnote-image-footnote {
+    font-size: 10px;
+}
