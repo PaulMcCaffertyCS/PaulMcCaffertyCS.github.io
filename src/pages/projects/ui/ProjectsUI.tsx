@@ -10,7 +10,9 @@ const ProjectsUI = () => {
             <div className="page-title-container">
                 <h1 id="page-title" className="page-title gradient-text">Projects</h1>
                 <p className="page-title-intro">
-                    I'll eventually list and link all my projects here. Thank you for your patience.
+                    {`Below you can find the projects that I have completed and documented in some fashion.\n
+                    My goal is to eventually list all projects I've worked on and developed, even those that I have not made public to expand this section.\n
+                    Thank you for your patience!`}
                 </p>
             </div>
             <div className="page-body">
