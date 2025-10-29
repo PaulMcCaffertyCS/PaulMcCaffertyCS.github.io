@@ -10,9 +10,19 @@ html {
 
 body {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   margin: 0px;
+  align-items: center;
+
+  background-image: url("./assets/images/backgrounds/green_circuitry_1200x1200.jpg");
+  background-color: rgba(0, 0, 0, 0.96);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 iframe {
@@ -81,17 +91,35 @@ p {
   display: inline-block;
 }
 
+.hyperlink-text {
+  text-align: center;
+  white-space: pre-line;
+  line-height: 32px;
+}
+
+.paragraph {
+  margin: 0px 50px;
+  white-space: pre-line;
+}
+
+.side-by-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 15px
+}
+
 
 /**
  * Section Styling
  */
-.page-container {
+/* .page-container {
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 50px;
 
   background-image: url("./assets/images/backgrounds/green_circuitry_1200x1200.jpg");
   background-color: rgba(0, 0, 0, 0.96);
@@ -100,7 +128,7 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
+} */
 
 .page-title-container {
   flex: 1;
@@ -239,17 +267,4 @@ p {
 
 #root {
   width: 100%;
-}
-
-#circuit-background {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
-  background-image: url("./assets/images/backgrounds/green_circuitry_1200x1200.jpg");
-  background-color: rgba(0, 0, 0, 0.96);
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
 }

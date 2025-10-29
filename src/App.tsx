@@ -4,8 +4,8 @@ import HomeUI from './pages/home/HomeUI';
 import ProjectsUI from './pages/projects/ui/ProjectsUI';
 import GamesUI from './pages/games/ui/GamesUI';
 import JezzBallUI from './pages/games/jezzball/ui/JezzBallUI';
-import AboutUI from './pages/about/AboutUI';
-import ContactUI from './pages/contact/ContactUI';
+import AboutUI from './pages/about/ui/AboutUI';
+import ContactUI from './pages/contact/ui/ContactUI';
 import CWUParkingApplicationUI from './pages/projects/cwuparkingapplication/CWUParkingApplicationUI';
 import FunctionLRLUI from './pages/projects/functionlrl/FunctionLRLUI';
 

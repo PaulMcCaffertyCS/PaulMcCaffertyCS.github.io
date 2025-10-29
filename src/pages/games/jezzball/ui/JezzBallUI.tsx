@@ -33,7 +33,6 @@ const JezzBallUI = () => {
                     <JezzBallGrid ref={jezzBallGridRef} width={gridWidth} height={gridHeight} getSquareProps={getSquareProps} />
                 </div>
             </div>
-            <div id="circuit-background"></div>
         </div>
     );
 };

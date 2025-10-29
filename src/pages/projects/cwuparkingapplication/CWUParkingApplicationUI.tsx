@@ -30,7 +30,6 @@ const CWUParkingApplicationUI = () => {
                     </p>
                 </div>
             </div>
-            <div id="circuit-background"></div>
         </div>
     );
 };

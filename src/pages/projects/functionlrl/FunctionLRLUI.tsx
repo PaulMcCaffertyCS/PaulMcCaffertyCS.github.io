@@ -1,10 +1,10 @@
 import "./FunctionLRL.css";
 import ProjectOption from "../viewmodel/ProjectOption";
-import functionLRLCreateEventImage from "../../../../assets/images/projects/functionlrl/functionlrl_createevent.png";
-import functionLRLMapViewImage from "../../../../assets/images/projects/functionlrl/functionlrl_mapview.png";
-import functionLRLMapEventViewImage from "../../../../assets/images/projects/functionlrl/functionlrl_mapeventview.png";
-import functionLRLOverview from "../../../../assets/videos/projects/functionlrl/functionlrl_overview.mp4";
-import functionLRLMapInteraction from "../../../../assets/videos/projects/functionlrl/functionlrl_mapinteraction.mp4";
+import functionLRLCreateEventImage from "../../../assets/images/projects/functionlrl/functionlrl_createevent.png";
+import functionLRLMapViewImage from "../../../assets/images/projects/functionlrl/functionlrl_mapview.png";
+import functionLRLMapEventViewImage from "../../../assets/images/projects/functionlrl/functionlrl_mapeventview.png";
+import functionLRLOverview from "../../../assets/videos/projects/functionlrl/functionlrl_overview.mp4";
+import functionLRLMapInteraction from "../../../assets/videos/projects/functionlrl/functionlrl_mapinteraction.mp4";
 import FootnoteImage from "../../../components/footnoteimage/FootnoteImage";
 import FootnoteVideo from "../../../components/footnotevideo/FootnoteVideo";
 
@@ -68,7 +68,6 @@ const FunctionLRLUI = () => {
                     </p>
                 </div>
             </div>
-            <div id="circuit-background"></div>
         </div>
     );
 };

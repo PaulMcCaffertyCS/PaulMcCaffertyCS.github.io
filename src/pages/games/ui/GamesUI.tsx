@@ -20,7 +20,6 @@ const GamesUI = () => {
                     <Game title={gameJezzBall.title} brief={gameJezzBall.brief} link={gameJezzBall.link} preview={gameJezzBall.preview} />
                 </div>
             </div>
-            <div id="circuit-background"></div>
         </div>
     );
 };
