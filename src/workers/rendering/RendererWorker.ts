@@ -3,8 +3,6 @@ import WorkerActionType from "../../utils/workers/WorkerActionType";
 import WorkerDrawCommandKind from "../../utils/workers/WorkerDrawCommandKind";
 import { LINE_WIDTH } from "../../pages/games/jezzball/helper/JezzBallHelper";
 
-const TAG = "RendererWorker";
-
 let context: OffscreenCanvasRenderingContext2D | null = null;
 
 self.onmessage = (event: RenderMessageEvent) => {

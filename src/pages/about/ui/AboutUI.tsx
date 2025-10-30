@@ -35,7 +35,7 @@ const AboutUI = () => {
                 <p className="hyperlink-text">
                     {`For more specifics on my capabilities and history, please download my resume.\n`}
                     <a className="hyperlink-text-link"
-                        href={`../../../assets/documents/${resumeFileName}`}
+                        href={`/documents/${resumeFileName}`}
                         download={resumeFileName}>
                         {resumeFileName}
                     </a>

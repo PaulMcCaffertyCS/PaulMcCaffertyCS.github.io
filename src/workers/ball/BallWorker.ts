@@ -1,3 +1,4 @@
+import Logger from "../../utils/log/Logger";
 import WorkerActionType from "../../utils/workers/WorkerActionType";
 import type { BallMessageEvent } from "./BallMessageEvent";
 
@@ -8,8 +9,9 @@ self.onmessage = (event: BallMessageEvent) => {
 
     if (type.value == WorkerActionType.START.value) {
         const moveBall = () => {
-            const nextX = ballState.x + ballState.dx;
-            const nextY = ballState.y + ballState.dy;
+            Logger.d(TAG, `ballState=${ballState}`)
+            // const nextX = ballState.x + ballState.dx;
+            // const nextY = ballState.y + ballState.dy;
         }
 
         requestAnimationFrame(moveBall);

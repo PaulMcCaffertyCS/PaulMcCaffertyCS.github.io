@@ -27,7 +27,6 @@ const JezzBallGrid: FC<JezzBallGridProps> = () => {
     });
     const jezzBallViewModel = new JezzBallViewModel(
         containerRef,
-        patternCanvasRef,
         gameCanvasRef,
         workersRef
     );
