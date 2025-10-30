@@ -18,7 +18,6 @@ class JezzBallViewModel {
     PATTERN_ITEM_SIZE = new Size(15, 12);
 
     private containerRef: RefObject<HTMLDivElement | null>;
-    private patternCanvasRef: RefObject<HTMLCanvasElement | null>;
     private gameCanvasRef: RefObject<HTMLCanvasElement | null>;
     private workersRef: RefObject<{
         renderer: Worker | null;
@@ -32,7 +31,6 @@ class JezzBallViewModel {
 
     constructor(
         containerRef: RefObject<HTMLDivElement | null>, 
-        patternCanvasRef: RefObject<HTMLCanvasElement | null>,
         gameCanvasRef: RefObject<HTMLCanvasElement | null>,
         workersRef: RefObject<{
             renderer: Worker | null;
@@ -41,7 +39,6 @@ class JezzBallViewModel {
         }>
     ) {
         this.containerRef = containerRef;
-        this.patternCanvasRef = patternCanvasRef;
         this.gameCanvasRef = gameCanvasRef;
         this.workersRef = workersRef;
         this.grid = new Array(this.GRID_SIZE.width).fill(0).map(() => new Array(this.GRID_SIZE.height).fill(0));

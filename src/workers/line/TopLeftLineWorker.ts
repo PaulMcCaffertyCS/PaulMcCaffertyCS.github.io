@@ -9,7 +9,7 @@ import type { LineMessageEvent } from "./LineMessageEvent";
 const TAG = "TopLeftLineWorker";
 
 self.onmessage = (event: LineMessageEvent) => {
-    const { type, direction, width, height, startX, startY, endX, endY } = event.data;
+    const { type, direction, startX, startY, endX, endY } = event.data;
     const lineDirection = new LineDirection(direction.value);
 
     if (type.value === WorkerActionType.DRAW.value) {

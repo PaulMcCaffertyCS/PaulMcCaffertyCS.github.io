@@ -5,8 +5,6 @@ interface LineMessageEvent extends MessageEvent {
     data: {
         type: WorkerActionType,
         direction: LineDirection,
-        width: number,
-        height: number,
         startX: number,
         startY: number,
         endX: number,
