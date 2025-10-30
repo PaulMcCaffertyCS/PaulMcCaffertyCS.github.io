@@ -1,0 +1,52 @@
+.page-footer-container {
+    position: relative;
+    height: 150px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(10, 182, 76, 0.1);
+}
+
+.page-footer {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 150px;
+}
+
+.page-footer-text {
+    color: white;
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.page-footer-send-message-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.page-footer-send-message-text {
+    margin-right: 5px;
+}
+
+.page-footer-send-message-button {
+    width: auto;
+    height: 25px;
+    color: white;
+    background: linear-gradient(90deg, rgb(50, 145, 47), rgb(25, 83, 110));
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    border: 0;
+    border-radius: 4px;
+}
+
+.page-footer-send-message-button:hover {
+    cursor: pointer;
+    transform: translateY(-1px);
+    box-shadow: 0 0 12px rgb(50, 145, 47);
+}
