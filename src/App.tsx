@@ -8,6 +8,7 @@ import AboutUI from './pages/about/ui/AboutUI';
 import ContactUI from './pages/contact/ui/ContactUI';
 import CWUParkingApplicationUI from './pages/projects/cwuparkingapplication/CWUParkingApplicationUI';
 import FunctionLRLUI from './pages/projects/functionlrl/FunctionLRLUI';
+import Footer from './components/footer/Footer';
 
 const App = () => (
   <Router>
@@ -24,6 +25,7 @@ const App = () => (
       <Route path="/about" element={<AboutUI />} />
       <Route path="/contact" element={<ContactUI />} />
     </Routes>
+    <Footer />
   </Router>
 );
 
