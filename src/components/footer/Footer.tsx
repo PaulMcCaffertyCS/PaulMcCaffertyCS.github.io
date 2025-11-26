@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./Footer.css";
+import { version } from "../../../package.json";
 
 const Footer = () => {
     const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Footer = () => {
             <div className="page-footer">
                 <div className="page-footer-inner-container page-footer-left-container">
                     <p className="page-footer-text">&copy; 2025 Paul McCafferty. All Rights Reserved.</p>
-                    <p className="page-footer-text">Website Version: 1.0.0</p>
+                    <p className="page-footer-text">Website Version: {version}</p>
                 </div>
                 <div className="page-footer-inner-container page-footer-right-container">
                     <p className="page-footer-text">Email: paul.m.mccafferty@gmail.com</p>
