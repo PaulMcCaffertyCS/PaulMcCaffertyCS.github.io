@@ -8,7 +8,7 @@ const ContactUI = () => {
                 <h1 id="page-title" className="page-title gradient-text">Contact</h1>
                 <p className="page-title-intro">
                     {`Thank you for visiting my site!\n
-                    Please send me a message below to contact me.\n
+                    Please send me a message below.\n
                     If you prefer direct email, you can reach me at `}
                     <span className="email">paul.m.mccafferty@gmail.com</span>
                 </p>

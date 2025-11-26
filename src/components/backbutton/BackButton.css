@@ -1,0 +1,17 @@
+.back-arrow-container {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 85px;
+    left: 25px;
+}
+
+.back-arrow-icon {
+    width: 30px;
+    height: 30px;
+    color: rgb(255, 255, 255);
+}
+
+.back-arrow-container:hover {
+    cursor: pointer;
+}
