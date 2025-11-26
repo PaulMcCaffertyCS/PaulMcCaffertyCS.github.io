@@ -165,11 +165,13 @@ p {
   border-radius: 12px;
   border-color: transparent;
   margin: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-option:hover {
-  border-color: rgb(6, 216, 93);
   cursor: pointer;
+  box-shadow: 0px 0px 20px rgb(45, 184, 115, 0.3);
+  transform: translateY(-6px);
 }
 
 .project-option-overview {

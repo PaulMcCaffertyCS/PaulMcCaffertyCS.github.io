@@ -1,10 +1,12 @@
 import ProjectOption from "../viewmodel/ProjectOption";
+import BackButton from "../../../components/backbutton/BackButton";
 
 const CWUParkingApplicationUI = () => {
     const projectCWU = ProjectOption.CWU;
     
     return (
         <div className="page-container">
+            <BackButton />
             <div className="page-title-container">
                 <h1 id="page-title" className="page-title gradient-text">CWU Parking Application</h1>
                 <p className="page-title-intro">{projectCWU.brief}</p>
@@ -23,10 +25,9 @@ const CWUParkingApplicationUI = () => {
                     <div className="divider-horizontal" />
                     <h2 className="project-about-title">About</h2>
                     <p className="project-about">
-                        {`Written using JavaScript + React Native + Expo on the front-end, Python + Firebase on the backend, we utilized the cross-platform capabilities of React Native to reach both Android and iOS users.\n
-                        We investigated into different cameras we could use outdoors, but nothing ever was quite what we wanted. Instead we just utilized a camera indoors, looking out a window into a parking lot for practice.\n
-                        This is where Python came into play because we wanted to use Machine Learning, through TensorFlow, to dynamically calculate how many spaces were occupied.\n
-                        This data was fed into Firebase, which was read by the front-end. The data was asynchronously fetched to update the relevant values on a timeout. To avoid flooding with requests, we set a 5s timeout for fetching, so the values would update once each five seconds.`}
+                        {`Developed using JavaScript, React Native, and Expo on the front-end, Python and Firebase on the backend, we utilized the cross-platform capabilities of React Native to reach both Android and iOS users.\n
+                        Python came into play for Machine Learning, with TensorFlow, to dynamically calculate how many spaces were occupied using image recognition.\n
+                        The data was fed into Firebase, and then read on the front-end. The data was asynchronously fetched to update the relevant values on a timeout. To avoid flooding with requests, we set a 30 second timeout for data fetching.`}
                     </p>
                 </div>
             </div>

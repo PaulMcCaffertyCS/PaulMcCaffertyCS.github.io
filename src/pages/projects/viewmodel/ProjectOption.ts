@@ -21,7 +21,7 @@ export default class ProjectOption {
     // - Bitly: https://www.bit.ly/cwuparkingapp
     static CWU = new ProjectOption(
         "CWU Parking Application",
-        "Made as my Capstone Project back in January-March of 2020, this was a prototype to address the parking issue on campus and assist campus goers with parking heads up.",
+        "My Capstone Project. A prototype to address the parking issue on campus. Assisting campus attendees to be aware of parking options before their arrival.",
         cwuParkingApplicationLogo,
         "cwu-parking-application",
         null
@@ -29,7 +29,7 @@ export default class ProjectOption {
 
     static FUNCTION_LRL = new ProjectOption(
         "Function: LRL",
-        "I always dreamt of owning a business. That's why while I was still a Senior in University and a business major approached me with an idea for \"bringing the social back to social media,\" I took to development.",
+        "Function was founded on the idea of \"bringing the 'social' back to social media.\" A business major in my college sought me out to develop his mobile application idea. We co-owned, released and upkept this business for several years. He managed the business side, I developed the product.",
         functionLRLLogo,
         "function-lrl",
         null
