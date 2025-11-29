@@ -8,13 +8,15 @@ const Navbar = () => {
     return (
         <div className="page-header-container">
             <div className="page-header">
-                <img className="page-header-logo"
-                    src={logoImage}
-                    alt="Paul McCafferty Logo"
-                    width="64"
-                    height="64"
-                />
-                <div id="page-menu">
+                <div className="page-header-logo-container">
+                    <img className="page-header-logo"
+                        src={logoImage}
+                        alt="Paul McCafferty Logo"
+                        width="64"
+                        height="64"
+                    />
+                </div>
+                <div id="page-menu" className="page-header-menu-container">
                     <button id="home-button" className="menu-button" onClick={() => navigate("/")}>Home</button>
                     <button id="projects-button" className="menu-button center-button" onClick={() => navigate("/projects")}>Projects</button>
                     {/* <button id="games-button" className="menu-button center-button" onClick={() => navigate("/games")}>Games</button> */}

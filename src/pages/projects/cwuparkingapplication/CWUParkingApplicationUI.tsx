@@ -1,5 +1,6 @@
 import ProjectOption from "../viewmodel/ProjectOption";
 import BackButton from "../../../components/backbutton/BackButton";
+import "./CWUParkingApplication.css";
 
 const CWUParkingApplicationUI = () => {
     const projectCWU = ProjectOption.CWU;
@@ -8,7 +9,7 @@ const CWUParkingApplicationUI = () => {
         <div className="page-container">
             <BackButton />
             <div className="page-title-container">
-                <h1 id="page-title" className="page-title gradient-text">CWU Parking Application</h1>
+                <h1 id="page-title" className="page-title gradient-text">CWU Parking{"\n"}Application</h1>
                 <p className="page-title-intro">{projectCWU.brief}</p>
             </div>
             <div className="page-body">

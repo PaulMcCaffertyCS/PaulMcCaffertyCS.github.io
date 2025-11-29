@@ -1,9 +1,9 @@
 .back-arrow-container {
-    position: absolute;
+    position: relative;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    top: 85px;
-    left: 25px;
+    padding: 1rem;
 }
 
 .back-arrow-icon {

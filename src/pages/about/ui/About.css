@@ -5,6 +5,25 @@
     justify-content: center;
 }
 
+.mobile-block {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .desktop-block {
+        display: none;
+    }
+
+    .mobile-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+
 #profile-picture {
     width: 300px;
 }

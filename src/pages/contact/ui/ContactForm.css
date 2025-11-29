@@ -1,33 +1,15 @@
-form p {
-    margin-top: 0.5rem;
-    font-size: 0.95rem;
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
-    transition: opacity 0.3s ease;
-}
-
-form p:nth-of-type(1) {
-    color: #00ff88;
-}
-
-form p:nth-of-type(2) {
-    color: #ff5f5f;
-}
-
-
-
 .form-field {
     display: flex;
     flex-direction: column;
+    width: min(65%, 600px);
     align-items: center;
     justify-content: center;
-    width: min(90%, 600px);
     gap: 1rem;
-    padding: 2.5rem;
+    padding: 2rem;
     margin: 3rem auto;
     background-color: rgba(0, 15, 30, 0.6);
-    border-width: 1px;
     border-style: solid;
+    border-width: 1px;
     border-color: rgba(0, 255, 128, 0.1);
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
@@ -82,22 +64,10 @@ form p:nth-of-type(2) {
 
 .submit-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(0, 255, 128, 0.3);
+    box-shadow: 0 0 12px rgba(0, 255, 128, 0.3);
 }
 
 .submit-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-}
-
-
-
-/* Subtle floating animation for background theme cohesion */
-@keyframes float-glow {
-    0%, 100% {
-        box-shadow: 0 0 12px rgba(0, 255, 128, 0.2);
-    }
-    50% {
-        box-shadow: 0 0 18px rgba(0, 255, 128, 0.4);
-    }
 }

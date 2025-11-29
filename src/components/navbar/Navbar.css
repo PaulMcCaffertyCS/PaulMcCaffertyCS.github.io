@@ -29,7 +29,11 @@ button {
     align-items: center;
     justify-content: space-between;
     background-color: rgb(10, 182, 76);
-    margin: 0px 15px;
+    margin: 0px 1rem;
+}
+
+.page-header-logo-container {
+    flex: 1.5;
 }
 
 .page-header-logo {
@@ -37,8 +41,15 @@ button {
     height: 48px;
 }
 
+.page-header-menu-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 .menu-button {
-    width: 100px;
+    flex: 1;
     height: 45px;
     color: rgb(240, 240, 240);
     font-size: 14px;

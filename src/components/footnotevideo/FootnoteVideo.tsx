@@ -33,6 +33,7 @@ const FootnoteVideo: React.FC<FootnoteVideoProps> = ({ className, video, videoTy
         <div className={`${className} footnote-video-container`}>
             <video className="footnote-video-video"
                 id="footnote-video-vid"
+                muted
                 controls>
                 <source src={video} type={videoType} />
             </video>
