@@ -24,14 +24,29 @@ const Project: FC<ProjectProps> = ({ title, brief, preview, navLink, link }): JS
     }
 
     return (
-        <div className="project-option" onClick={onClick}>
-            <div className="project-option-overview">
-                <h2 className="project-option-text">{title}</h2>
-                <p className="project-option-brief">{brief}</p>
+        <div>
+            <div className="project-option project-option-desktop" onClick={onClick}>
+                <div className="project-option-overview">
+                    <h2 style={{ fontSize: "20px" }} className="project-option-text">{title}</h2>
+                    <p className="project-option-brief">{brief}</p>
+                </div>
+                <div className="project-option-divider-vertical" />
+                <div className="project-option-preview">
+                    <img className="project-option-image" src={preview} alt="Preview" />
+                </div>
             </div>
-            <div className="project-option-divider" />
-            <div className="project-option-preview">
-                <img className="project-option-image" src={preview} alt="Preview" />
+            <div className="project-option project-option-mobile" onClick={onClick}>
+                <div className="project-option-title">
+                    <h2 style={{ fontSize: "20px" }} className="project-option-text">{title}</h2>
+                </div>
+                <div className="project-option-divider-horizontal" />
+                <div className="project-option-preview">
+                    <img className="project-option-image" src={preview} alt="Preview" />
+                </div>
+                <div className="project-option-divider-horizontal" />
+                <div className="project-option-description">
+                    <p className="project-option-brief">{brief}</p>
+                </div>
             </div>
         </div>
     )

@@ -9,7 +9,20 @@ const AboutUI = () => {
         <div className="page-container">
             <div className="page-title-container">
                 <h1 id="page-title" className="page-title gradient-text">About</h1>
-                <div className="side-by-side">
+                <div className="desktop-block">
+                    <div className="side-by-side">
+                        <div className="image-wrapper">
+                            <img id="profile-picture" src={paulMcCaffertyProfile} />
+                        </div>
+                        <p id="profile-intro" className="page-title-intro">
+                            {`Good ${getTimeOfDayGreeting()}! I hope you're having a fantabulous day.\n
+                            I am a full-stack developer based out of Myrtle Beach, SC, USA. I have 5+ years of professional experience, and 2.5 years of University in Computer Science, leading to a 3.38 GPA and a Bachelor's of Science in Computer Science.\n
+                            My first coding class used JavaScript and Node.js. A few years later in Running Start, I took Java, C++ and Python classes. I proceeded to go to Central Washington University, where I studied a plethora of languages, including: JavaScript, Java, Python, Assembly, Prolog, SQL, C++ and C.\n
+                            While at University, I focused in Mobile Development. Specifically, cross-platform. I did some Android development, although my main work was on two apps in JavaScript, React Native and Expo.`}
+                        </p>
+                    </div>
+                </div>
+                <div className="mobile-block">
                     <div className="image-wrapper">
                         <img id="profile-picture" src={paulMcCaffertyProfile} />
                     </div>

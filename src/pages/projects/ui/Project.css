@@ -1,0 +1,96 @@
+.project-option {
+    width: 85%;
+    max-width: 750px;
+    height: fit-content;
+    align-items: stretch;
+    justify-content: center;
+    background-color: rgb(11, 11, 15);
+    overflow: hidden;
+    padding: 1rem;
+    margin: 2rem 0.5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 12px;
+    border-color: transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-option:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 20px rgb(45, 184, 115, 0.3);
+    transform: translateY(-6px);
+}
+
+.project-option-desktop {
+    display: flex;
+    flex-direction: row;
+}
+
+.project-option-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .project-option-desktop {
+        display: none;
+    }
+
+    .project-option-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.project-option-title {
+    flex: 1;
+    width: 85%;
+    height: 100%;
+}
+
+.project-option-overview {
+    flex: 5;
+    height: 100%;
+    flex-direction: column;
+}
+
+.project-option-preview {
+    flex: 4;
+    display: flex;
+    align-items: center;
+}
+
+.project-option-description {
+    flex: 4;
+    height: 100%;
+}
+
+.project-option-image {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.project-option-divider-vertical {
+    width: 1px;
+    background-color: rgb(161, 161, 161);
+    margin: 0px 10px;
+}
+
+.project-option-divider-horizontal {
+    height: 1px;
+    background-color: rgb(161, 161, 161);
+    margin: 10px 0px;
+}
+
+.project-option-text {
+    padding: 25px 20px 0px;
+    color: white;
+}
+
+.project-option-brief {
+    padding: 0px 20px;
+    color: white;
+    white-space: pre-line;
+    font-size: 1rem;
+}
