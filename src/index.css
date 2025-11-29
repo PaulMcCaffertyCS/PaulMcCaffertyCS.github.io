@@ -6,6 +6,7 @@ html {
   width: 100%;
   height: 100%;
   font-family: "Montserrat", sans-serif;
+  font-size: 16px; /* This sets the unit measurement of 'rem' */
 }
 
 body {
@@ -69,7 +70,7 @@ p {
  * Element Type Styling
  */
 .divider-horizontal {
-  width: 500px;
+  width: 98%;
   height: 1px;
   background-color: rgb(255, 255, 255);
   margin: 25px 5px;
@@ -77,8 +78,9 @@ p {
 
 .divider-vertical {
   width: 1px;
-  height: 500px;
+  height: 98%;
   background-color: rgb(255, 255, 255);
+  margin: 0px 25px;
 }
 
 .gradient-text {
@@ -124,12 +126,11 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
   margin-bottom: 50px;
 }
 
 .page-title-intro {
-  width: 650px;
+  width: 80%;
   margin-top: 20px;
   text-align: center;
   white-space: pre-line;
@@ -151,61 +152,6 @@ p {
   justify-content: center;
 }
 
-.project-option {
-  display: flex;
-  flex-direction: row;
-  width: 750px;
-  height: 300px;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(11, 11, 15);
-  overflow: hidden;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 12px;
-  border-color: transparent;
-  margin: 25px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-option:hover {
-  cursor: pointer;
-  box-shadow: 0px 0px 20px rgb(45, 184, 115, 0.3);
-  transform: translateY(-6px);
-}
-
-.project-option-overview {
-  height: 100%;
-  flex: 5;
-  flex-direction: column;
-}
-
-.project-option-preview {
-  flex: 4;
-}
-
-.project-option-image {
-  width: 100%;
-  height: 100%;
-}
-
-.project-option-divider {
-  width: 2px;
-  height: 100%;
-  background-color: rgb(161, 161, 161);
-}
-
-.project-option-text {
-  padding: 25px 20px 0px;
-  color: white;
-}
-
-.project-option-brief {
-  padding: 0px 20px;
-  color: white;
-  white-space: pre-line;
-}
-
 .project-overview {
   display: flex;
   flex-direction: column;
@@ -218,14 +164,14 @@ p {
 }
 
 .project-video-wide {
-  width: 600px;
+  width: min(80%, 700px);
   height: 400px;
   margin: 25px;
 }
 
 .project-video-tall {
   width: 250px;
-  height: 500px;
+  height: min(30%, 500px);
   margin: 15px;
 }
 
