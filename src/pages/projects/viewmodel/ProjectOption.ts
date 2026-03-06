@@ -1,5 +1,6 @@
 import cwuParkingApplicationLogo from "../../../assets/images/projects/cwuparkingapplication/cwuparkingapplication.png";
 import functionLRLLogo from "../../../assets/images/projects/functionlrl/functionlrl_logo.jpg";
+import oneThingLogo from "../../../assets/images/projects/onething/onething_logo.png";
 
 export default class ProjectOption {
     title: string;
@@ -32,6 +33,14 @@ export default class ProjectOption {
         "Function was founded on the idea of \"bringing the 'social' back to social media.\" A business major in my college sought me out to develop his mobile application idea. We co-owned, released and upkept this business for several years. He managed the business side, I developed the product.",
         functionLRLLogo,
         "function-lrl",
+        null
+    );
+
+    static ONE_THING = new ProjectOption(
+        "One Thing",
+        "I've recently been hearing friends and family talking about how nowadays it's hard to feel accomplishment. If you were to do One Thing to feel accomplished today, what would it be?",
+        oneThingLogo,
+        "onething",
         null
     );
 }

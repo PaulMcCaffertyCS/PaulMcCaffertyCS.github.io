@@ -23,78 +23,98 @@ const FunctionLRLUI = () => {
                 <div className="project-overview">
                     <h2 className="project-video-title">Videos</h2>
                     <div id="project-videos-desktop">
-                        <FootnoteVideo className="project-video-tall"
+                        <FootnoteVideo
+                            className="project-video-tall"
                             video={functionLRLOverview}
                             videoType="video/mp4"
                             videoWidth={null}
                             videoHeight={null}
                             footnote="April 2022"
-                            footnoteSize={null} />
-                        <FootnoteVideo className="project-video-tall"
+                            footnoteSize={null}
+                        />
+                        <FootnoteVideo
+                            className="project-video-tall"
                             video={functionLRLMapInteraction}
                             videoType="video/mp4"
                             videoWidth={null}
                             videoHeight={null}
                             footnote="February 2022"
-                            footnoteSize={null} />
+                            footnoteSize={null}
+                        />
                     </div>
                     <div id="project-videos-mobile">
-                        <FootnoteVideo className="project-video-tall"
+                        <FootnoteVideo
+                            className="project-video-tall"
                             video={functionLRLOverview}
                             videoType="video/mp4"
                             videoWidth={null}
                             videoHeight={null}
                             footnote="April 2022"
-                            footnoteSize={null} />
-                        <FootnoteVideo className="project-video-tall"
+                            footnoteSize={null}
+                        />
+                        <FootnoteVideo
+                            className="project-video-tall"
                             video={functionLRLMapInteraction}
                             videoType="video/mp4"
                             videoWidth={null}
                             videoHeight={null}
                             footnote="February 2022"
-                            footnoteSize={null} />
+                            footnoteSize={null}
+                        />
                     </div>
                     <div className="divider-horizontal" />
                     <h2 className="project-about-title">Images</h2>
                     <div id="project-images-desktop">
-                        <FootnoteImage className="project-image"
+                        <FootnoteImage
+                            className="project-image"
                             image={functionLRLCreateEventImage}
                             imageWidth={null}
                             imageHeight={null}
                             footnote="February 2022"
-                            footnoteSize={null} />
-                        <FootnoteImage className="project-image"
+                            footnoteSize={null}
+                        />
+                        <FootnoteImage
+                            className="project-image"
                             image={functionLRLMapViewImage}
                             imageWidth={null}
                             imageHeight={null}
                             footnote="February 2022"
-                            footnoteSize={null} />
-                        <FootnoteImage className="project-image"
+                            footnoteSize={null}
+                        />
+                        <FootnoteImage
+                            className="project-image"
                             image={functionLRLMapEventViewImage}
                             imageWidth={null}
                             imageHeight={null}
                             footnote="March 2022"
-                            footnoteSize={null} />
+                            footnoteSize={null}
+                        />
                     </div>
                     <div id="project-images-mobile">
-                        <FootnoteImage className="project-image"
+                        <FootnoteImage
+                            className="project-image"
                             image={functionLRLCreateEventImage}
                             imageWidth={null}
                             imageHeight={null}
                             footnote="February 2022"
-                            footnoteSize={null} />
-                        <FootnoteImage className="project-image"
+                            footnoteSize={null}
+                        />
+                        <FootnoteImage
+                            className="project-image"
                             image={functionLRLMapViewImage}
                             imageWidth={null}
                             imageHeight={null}
                             footnote="February 2022"
-                            footnoteSize={null} />
-                        <FootnoteImage className="project-image"
+                            footnoteSize={null}
+                        />
+                        <FootnoteImage
+                            className="project-image"
                             image={functionLRLMapEventViewImage}
                             imageWidth={null}
                             imageHeight={null}
                             footnote="March 2022"
-                            footnoteSize={null} />
+                            footnoteSize={null}
+                        />
                     </div>
                     <div className="divider-horizontal" />
                     <h2 className="project-about-title">About</h2>
