@@ -1,3 +1,8 @@
+---
+layout: default
+title: Terms of Service
+---
+
 # **Terms of Service for “One Thing”**
 
 **Last Updated:** March 6, 2026
