@@ -1,3 +1,8 @@
+---
+layout: default
+title: Privacy Policy
+---
+
 # **Privacy Policy for “One Thing”**
 
 **Last Updated:** March 6, 2026
