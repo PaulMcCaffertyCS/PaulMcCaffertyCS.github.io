@@ -1,10 +1,3 @@
----
-layout: default
-title: Terms of Service
-permalink: /projects/onething/terms/
-
----
-
 # **Terms of Service for “One Thing”**
 
 **Last Updated:** March 6, 2026

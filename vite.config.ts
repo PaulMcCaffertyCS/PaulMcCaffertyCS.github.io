@@ -4,7 +4,17 @@ import react from '@vitejs/plugin-react-swc'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: "markdown-loader",
+      transform(code, id) {
+        if (id.slice(-3) === ".md") {
+          return `export default ${JSON.stringify(code)};`;
+        }
+      }
+    }
+  ],
   build: {
     outDir: "docs"
   }
