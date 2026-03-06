@@ -11,6 +11,7 @@ import ContactUI from './pages/contact/ui/ContactUI';
 import CWUParkingApplicationUI from './pages/projects/cwuparkingapplication/CWUParkingApplicationUI';
 import FunctionLRLUI from './pages/projects/functionlrl/FunctionLRLUI';
 import OneThingUI from './pages/projects/onething/OneThing';
+import MarkdownPage from './components/markdown/MarkdownPage';
 
 const App = () => (
   <Router>
@@ -25,6 +26,8 @@ const App = () => (
       <Route path="/projects/function-lrl" element={<FunctionLRLUI />} />
       <Route path="/onething" element={<Navigate to="/projects/onething" replace />} />
       <Route path="/projects/onething" element={<OneThingUI />} />
+      <Route path="/projects/onething/policy" element={<MarkdownPage markdown={"policy"} />} />
+      <Route path="/projects/onething/terms" element={<MarkdownPage markdown={"terms"} />} />
       <Route path="/games" element={<GamesUI />} />
       <Route path="/games/jezzball" element={<JezzBallUI />} />
       <Route path="/about" element={<AboutUI />} />
