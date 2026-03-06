@@ -1,3 +1,4 @@
 # _config.yml
+theme: minima
 include:
-  - src/pages/projects/onething
+  - src

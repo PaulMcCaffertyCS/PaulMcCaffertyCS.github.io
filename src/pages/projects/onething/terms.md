@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Terms of Service
+permalink: /projects/onething/terms/
+
 ---
 
 # **Terms of Service for “One Thing”**
