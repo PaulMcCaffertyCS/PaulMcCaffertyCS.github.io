@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Privacy Policy
+permalink: /projects/onething/privacy/
 ---
 
 # **Privacy Policy for “One Thing”**
