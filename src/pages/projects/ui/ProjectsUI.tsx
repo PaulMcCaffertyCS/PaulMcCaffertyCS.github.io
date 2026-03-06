@@ -4,6 +4,7 @@ import ProjectOption from "../viewmodel/ProjectOption";
 const ProjectsUI = () => {
     const projectCWU = ProjectOption.CWU;
     const projectFunction = ProjectOption.FUNCTION_LRL;
+    const projectOneThing = ProjectOption.ONE_THING;
     
     return (
         <div className="page-container">
@@ -16,16 +17,27 @@ const ProjectsUI = () => {
             </div>
             <div className="page-body">
                 <div className="project-options">
-                    <Project title={projectCWU.title}
+                    <Project
+                        title={projectCWU.title}
                         brief={projectCWU.brief}
                         preview={projectCWU.preview}
                         navLink={projectCWU.navLink}
-                        link={projectCWU.link} />
-                    <Project title={projectFunction.title}
+                        link={projectCWU.link}
+                    />
+                    <Project
+                        title={projectFunction.title}
                         brief={projectFunction.brief}
                         preview={projectFunction.preview}
                         navLink={projectFunction.navLink}
-                        link={projectFunction.link} />
+                        link={projectFunction.link}
+                    />
+                    <Project
+                        title={projectOneThing.title}
+                        brief={projectOneThing.brief}
+                        preview={projectOneThing.preview}
+                        navLink={projectOneThing.navLink}
+                        link={projectOneThing.link}
+                    />
                 </div>
             </div>
         </div>
