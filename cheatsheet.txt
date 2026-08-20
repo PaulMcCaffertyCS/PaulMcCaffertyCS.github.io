@@ -1,0 +1,4 @@
+**START SERVER**
+- vite
+- npx vite
+- npm run dev (this runs vite)
