@@ -1,6 +1,6 @@
 import cwuParkingApplicationLogo from "../../../assets/images/projects/cwuparkingapplication/cwuparkingapplication.png";
 import functionLRLLogo from "../../../assets/images/projects/functionlrl/functionlrl_logo.jpg";
-import oneThingLogo from "../../../assets/images/projects/onething/onething_logo.png";
+import oneThingLogo from "../../../assets/images/projects/onething/icon_1024x1024.png";
 
 export default class ProjectOption {
     title: string;
