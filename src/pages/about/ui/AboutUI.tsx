@@ -3,7 +3,7 @@ import { getTimeOfDayGreeting } from "../viewmodel/AboutViewModel";
 import paulMcCaffertyProfile from "../../../assets/images/PaulMcCafferty.jpg";
 
 const AboutUI = () => {
-    const resumeFileName = "Paul_McCafferty_Resume_November2025.pdf";
+    const resumeFileName = "Paul_McCafferty_Resume_August2026.pdf";
 
     return (
         <div className="page-container">
